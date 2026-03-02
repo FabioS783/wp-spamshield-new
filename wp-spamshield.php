@@ -1161,7 +1161,7 @@ function rs_wpss_encode_emails( $string ) {
 				\[[\d.a-fA-F:]+\]
 			)
 		}xi';
-	return preg_replace_callback( $regex_phrase, create_function( '$matches', 'return '.$encode_method.'($matches[0]);' ), $string );
+	return preg_replace_callback( $regex_phrase, function( $matches ) use ( $encode_method ) { return $encode_method( $matches[0] ); }, $string );
 	}
 
 function rs_wpss_encode_str( $string ) {
@@ -1726,8 +1726,7 @@ function rs_wpss_log_data( $wpss_log_data_array, $wpss_log_data_errors, $wpss_lo
 	$wpss_display_name = $wpss_user_firstname = $wpss_user_lastname = $wpss_user_email = $wpss_user_url = $wpss_user_login = $wpss_user_id = $wpss_rsds = $bclm_off = $bclm_oc = '';
 	$wpss_user_logged_in 		= FALSE;
 	if ( is_user_logged_in() ) {
-		global $current_user;
-		get_currentuserinfo();
+		$current_user = wp_get_current_user();
 		$wpss_display_name 		= $current_user->display_name;
 		$wpss_user_firstname 	= $current_user->user_firstname;
 		$wpss_user_lastname 	= $current_user->user_lastname;
@@ -3979,8 +3978,7 @@ function rs_wpss_check_comment_spam( $commentdata ) {
 
 	if ( current_user_can( 'publish_posts' ) ) {
 		/* Added Author Requirement - current_user_can( 'publish_posts' ) - v 1.4.7 */
-		global $current_user;
-		get_currentuserinfo();
+		$current_user = wp_get_current_user();
 		$wpss_display_name 		= $current_user->display_name;
 		$wpss_user_firstname 	= $current_user->user_firstname;
 		$wpss_user_lastname 	= $current_user->user_lastname;
@@ -6644,7 +6642,7 @@ if (!class_exists('WP_SpamShield')) {
 			add_action( 'comment_form', 'rs_wpss_comment_form_append', 10 );
 			foreach( array( 'wp_footer', 'login_footer' ) as $a ) { add_action( $a, array(&$this,'insert_footer_js') ); } /* Changed 1.9.1 */
 			add_action( 'preprocess_comment', 'rs_wpss_check_comment_spam', -10 );
-			add_action( 'activity_box_end', array(&$this,'dashboard_counter') );
+			add_action( 'wp_dashboard_setup', array(&$this,'dashboard_widget_setup') );
 			add_action( 'admin_print_footer_scripts', array(&$this,'editor_add_quicktags') );
 			add_action( 'register_form', 'rs_wpss_register_form_append', 1 );
 			add_action( 'user_register', 'rs_wpss_user_register', 1 );
@@ -6825,6 +6823,11 @@ if (!class_exists('WP_SpamShield')) {
 				update_user_meta( $user_id, 'wpss_new_user_email_sent', TRUE );
 				}
 			update_option( 'spamshield_init_user_approve_run', TRUE );
+			}
+
+		function dashboard_widget_setup() {
+			if ( rs_wpss_is_admin_sproc( TRUE ) ) { return; }
+			wp_add_dashboard_widget( 'wpss_dashboard_widget', 'WP-SpamShield', array(&$this,'dashboard_counter') );
 			}
 
 		function dashboard_counter() {
