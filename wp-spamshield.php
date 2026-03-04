@@ -4,7 +4,7 @@ Plugin Name: WP-SpamShield
 Plugin URI: http://www.redsandmarketing.com/plugins/wp-spamshield/
 Description: An extremely powerful and user-friendly all-in-one anti-spam plugin that <strong>eliminates comment spam, trackback spam, contact form spam, and registration spam</strong>. No CAPTCHA's, challenge questions, or other inconvenience to website visitors. Enjoy running a WordPress site without spam! Includes a spam-blocking contact form feature.
 Author: Scott Allen
-Version: 1.9.5.5
+Version: 2.0.0
 Author URI: http://www.redsandmarketing.com/
 Text Domain: wp-spamshield
 License: GPLv2
@@ -41,7 +41,7 @@ if( !defined( 'ABSPATH' ) ) {
 	die( 'ERROR: This plugin requires WordPress and will not function if called directly.' );
 	}
 
-define( 'WPSS_VERSION', '1.9.5.5' );
+define( 'WPSS_VERSION', '2.0.0' );
 define( 'WPSS_REQUIRED_WP_VERSION', '3.9' );
 define( 'WPSS_REQUIRED_PHP_VERSION', '5.3' );
 /***
@@ -7131,45 +7131,8 @@ if (!class_exists('WP_SpamShield')) {
 
 			?>
 
-			<div style="width:375px;height:<?php echo $wpss_info_box_height; ?>px;border-style:solid;border-width:1px;border-color:#003366;background-color:#DDEEFF;padding:0px 15px 0px 15px;margin-top:<?php echo $wpss_vert_margins; ?>px;margin-right:<?php echo $wpss_horz_margins; ?>px;float:left;clear:left;">
-			<p><a name="wpss_top"><h3><?php _e( 'Quick Navigation - Contents', WPSS_PLUGIN_NAME ); ?></h3></a></p>
-			<ol style="list-style-type:decimal;padding-left:30px;">
-				<li><a href="#wpss_general_options"><?php _e( 'General Settings', WPSS_PLUGIN_NAME ); ?></a></li>
-				<li><a href="#wpss_contact_form_options"><?php _e( 'Contact Form Settings', WPSS_PLUGIN_NAME ); ?></a></li>
-				<li><a href="<?php echo WPSS_HOME_URL; ?>#wpss_installation_instructions" target="_blank" rel="external" ><?php _e( 'Installation Instructions', WPSS_PLUGIN_NAME ); ?></a></li>
-				<li><a href="<?php echo WPSS_HOME_URL; ?>#wpss_displaying_stats" target="_blank" rel="external" ><?php _e( 'Displaying Spam Stats on Your Blog', WPSS_PLUGIN_NAME ); ?></a></li>
-				<li><a href="<?php echo WPSS_HOME_URL; ?>#wpss_adding_contact_form" target="_blank" rel="external" ><?php _e( 'Adding a Contact Form to Your Blog', WPSS_PLUGIN_NAME ); ?></a></li>
-				<li><a href="<?php echo WPSS_HOME_URL; ?>#wpss_configuration" target="_blank" rel="external" ><?php _e( 'Configuration Information', WPSS_PLUGIN_NAME ); ?></a></li>
-				<li><a href="<?php echo WPSS_HOME_URL; ?>#wpss_known_conflicts" target="_blank" rel="external" ><?php _e( 'Known Plugin Conflicts', WPSS_PLUGIN_NAME ); ?></a></li>
-				<li><a href="<?php echo WPSS_HOME_URL; ?>#wpss_troubleshooting" target="_blank" rel="external" ><?php _e( 'Troubleshooting Guide / Support', WPSS_PLUGIN_NAME ); ?></a></li>
-				<li><a href="#wpss_let_others_know"><?php _e( 'Let Others Know About WP-SpamShield', WPSS_PLUGIN_NAME ); ?></a></li>
-				<li><a href="#wpss_download_plugin_documentation"><?php echo rs_wpss_doc_txt(); ?></a></li>
-			</ol>
-			</div>
-			<div style="width:375px;height:<?php echo $wpss_info_box_height; ?>px;border-style:solid;border-width:1px;border-color:#003366;background-color:#DDEEFF;padding:0px 15px 0px 15px;margin-top:<?php echo $wpss_vert_margins; ?>px;margin-right:<?php echo $wpss_horz_margins; ?>px;float:left;">
-			<p>
-			<?php if ( $spam_count_raw > 100 ) { ?>
-			<a name="wpss_rate"><h3><?php _e( 'Happy with WP-SpamShield?', WPSS_PLUGIN_NAME ); ?></h3></a></p>
-			<p><img src='<?php echo WPSS_PLUGIN_IMG_URL; ?>/5-stars-rating.png' alt='' width='99' height='19' align='right' style='border-style:none;padding:3px 0 20px 20px;float:right;' /><a href="<?php echo WPSS_WP_RATING_URL; ?>" target="_blank" rel="external" ><?php _e( 'Let others know by giving it a good rating on WordPress.org!', WPSS_PLUGIN_NAME ); ?></a><br /><br />
-			<?php } ?>
-
-			<strong><?php echo rs_wpss_doc_txt(); ?>:</strong> <a href="<?php echo WPSS_HOME_URL; ?>" target="_blank" rel="external" ><?php _e( 'Plugin Homepage', WPSS_PLUGIN_NAME ); ?></a><br />
-			<strong><?php _e( 'Tech Support', WPSS_PLUGIN_NAME ); ?>:</strong> <a href="<?php echo WPSS_SUPPORT_URL; ?>" target="_blank" rel="external" ><?php _e( 'WP-SpamShield Support', WPSS_PLUGIN_NAME ); ?></a><br />
-			<strong><?php _e( 'Follow on Twitter', WPSS_PLUGIN_NAME ); ?>:</strong> <a href="http://twitter.com/WPSpamShield" target="_blank" rel="external" >@WPSpamShield</a><br />
-			<strong><?php _e( 'Let Others Know', WPSS_PLUGIN_NAME ); ?>:</strong> <a href="http://www.redsandmarketing.com/blog/wp-spamshield-wordpress-plugin-released/#comments" target="_blank" rel="external" ><?php _e( 'Leave a Comment' ); ?></a><br />
-            <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank" style="margin-top:10px;">
-            <input type="hidden" name="cmd" value="_s-xclick">
-            <input type="hidden" name="hosted_button_id" value="DFMTNHJEPFFUL">
-            <input type="image" src="<?php echo WPSS_PLUGIN_IMG_URL; ?>/btn-donate-sm.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!" />
-            <img alt="" border="0" src="<?php echo WPSS_PLUGIN_IMG_URL; ?>/spacer.gif" width="1" height="1" />
-            </form>
-			</p>
-			<?php 
-			echo '<p><strong><a href="'.WPSS_DONATE_URL.'" title="' . __( 'WP-SpamShield is provided for free.', WPSS_PLUGIN_NAME ) . ' ' . __( 'If you like the plugin, consider a donation to help further its development.', WPSS_PLUGIN_NAME ) . '" target="_blank" rel="external" >' . __( 'Donate to WP-SpamShield', WPSS_PLUGIN_NAME ) . '</a></strong></p>';
-			?>
-			</div>
 			<div style='width:797px;border-style:solid;border-width:1px;border-color:#333333;background-color:#FEFEFE;padding:0px 15px 0px 15px;margin-top:<?php echo $wpss_vert_margins; ?>px;margin-right:<?php echo $wpss_horz_margins; ?>px;float:left;clear:left;'>
-			<p><a name="wpss_general_options"><h3><?php _e( 'General Settings', WPSS_PLUGIN_NAME ); ?></h3></a></p>
+			<p><a name="wpss_general_options"><h3><?php _e( 'Impostazioni Generali', WPSS_PLUGIN_NAME ); ?></h3></a></p>
 			<form name="wpss_general_options" method="post">
 			<input type="hidden" name="submitted_wpss_general_options" value="1" />
             <?php
@@ -7183,71 +7146,71 @@ if (!class_exists('WP_SpamShield')) {
 					<li>
 					<label for="comment_logging">
 						<input type="checkbox" id="comment_logging" name="comment_logging" <?php echo ($spamshield_options['comment_logging']==TRUE?"checked=\"checked\"":"") ?> value="1" />
-						<strong><?php echo __( 'Blocked Comment Logging Mode', WPSS_PLUGIN_NAME );
-						if ( rs_wpss_is_lang_en_us() ) { echo ' &mdash; ' . __( 'See what spam has been blocked!', WPSS_PLUGIN_NAME ); /* TO DO: TRANSLATE */ }
-						?></strong><br /><?php _e( 'Temporary diagnostic mode that logs blocked comment submissions for 7 days, then turns off automatically.', WPSS_PLUGIN_NAME ); ?><br /><?php _e( 'Log is cleared each time this feature is turned on.', WPSS_PLUGIN_NAME ); ?>
+						<strong><?php echo __( 'Modalità Registrazione Commenti Bloccati', WPSS_PLUGIN_NAME );
+						if ( rs_wpss_is_lang_en_us() ) { echo ' &mdash; ' . __( 'Vedi quale spam è stato bloccato!', WPSS_PLUGIN_NAME ); /* TO DO: TRANSLATE */ }
+						?></strong><br /><?php _e( 'Modalità diagnostica temporanea che registra i tentativi di commento bloccati per 7 giorni, per poi disattivarsi automaticamente.', WPSS_PLUGIN_NAME ); ?><br /><?php _e( 'Il log viene cancellato ogni volta che questa funzione viene attivata.', WPSS_PLUGIN_NAME ); ?>
 					</label>
 					<?php
 					if ( !empty( $spamshield_options['comment_logging'] ) ) {
 						/* If comment logging is on, check file permissions and attempt to fix. Reset .htaccess file for data dir, to allow IP of current admin to view log file. Let user know if not set correctly. */
 						$wpss_hta_reset = rs_wpss_log_reset( NULL, TRUE, TRUE );
 						if ( empty( $wpss_hta_reset ) ) {
-							echo '<br />'.WPSS_EOL.'<span style="color:red;"><strong>' . sprintf( __( 'The log file may not be writeable. You may need to manually correct the file permissions.<br />Set the permission for the "%1$s" directory to "%2$s" and all files within it to "%3$s".</strong><br />If that doesn\'t work, then please read the <a href="%4$s" %5$s>FAQ</a> for this topic.', WPSS_PLUGIN_NAME ), WPSS_PLUGIN_DATA_PATH, '0755', '0644', WPSS_HOME_URL.'#wpss_faqs_5', 'target="_blank"' ) . '</span><br />'.WPSS_EOL;
+							echo '<br />'.WPSS_EOL.'<span style="color:red;"><strong>' . sprintf( __( 'Il file di log potrebbe non essere scrivibile. Potresti dover correggere manualmente i permessi dei file.<br />Imposta il permesso per la directory "%1$s" a "%2$s" e tutti i file all\'interno a "%3$s".</strong><br />Se non funziona, leggi le <a href="%4$s" %5$s>FAQ</a> per questo argomento.', WPSS_PLUGIN_NAME ), WPSS_PLUGIN_DATA_PATH, '0755', '0644', WPSS_HOME_URL.'#wpss_faqs_5', 'target="_blank"' ) . '</span><br />'.WPSS_EOL;
 							}
 						}
 					else { rs_wpss_log_reset( NULL, FALSE, FALSE, TRUE ); /* Create log file if it doesn't exist */ }
 					$wpss_log_key = rs_wpss_get_log_key();
 					$wpss_log_filename = strpos( WPSS_SERVER_NAME_REV, RSMP_MDBUG_SERVER_NAME_REV ) === 0 ? 'temp-comments-log.txt' : 'temp-comments-log-'.$wpss_log_key.'.txt';
 					?>
-					<br /><strong><a href="<?php echo WPSS_PLUGIN_DATA_URL.'/'.$wpss_log_filename; ?>" target="_blank"><?php _e( 'Download Comment Log File', WPSS_PLUGIN_NAME ); ?></a> - <?php _e( 'Right-click, and select "Save Link As"', WPSS_PLUGIN_NAME ); ?></strong><br />&nbsp;
+					<br /><strong><a href="<?php echo WPSS_PLUGIN_DATA_URL.'/'.$wpss_log_filename; ?>" target="_blank"><?php _e( 'Scarica File Log Commenti', WPSS_PLUGIN_NAME ); ?></a> - <?php _e( 'Fai clic destro e seleziona "Salva link con nome"', WPSS_PLUGIN_NAME ); ?></strong><br />&nbsp;
 					</li>
 					<li>
 					<label for="comment_logging_all">
 						<input type="checkbox" id="comment_logging_all" name="comment_logging_all" <?php echo ($spamshield_options['comment_logging_all']==TRUE?"checked=\"checked\"":"") ?> value="1" />
-						<strong><?php _e( 'Log All Comments', WPSS_PLUGIN_NAME ); ?></strong><br /><?php _e( 'Requires that Blocked Comment Logging Mode be engaged. Instead of only logging blocked comments, this will allow the log to capture all comments while logging mode is turned on. This provides more technical data for comment submissions than WordPress provides, and helps us improve the plugin.<br />If you plan on submitting spam samples to us for analysis, it\'s helpful for you to turn this on, otherwise it\'s not necessary.', WPSS_PLUGIN_NAME ); ?></label>
-					<br /><a href="<?php echo WPSS_HOME_URL; ?>#wpss_configuration_log_all_comments" target="_blank" rel="external" ><?php _e( 'For more about this, see the documentation.', WPSS_PLUGIN_NAME ); ?></a><br />&nbsp;
+						<strong><?php _e( 'Registra Tutti i Commenti', WPSS_PLUGIN_NAME ); ?></strong><br /><?php _e( 'Richiede che la Modalità Registrazione Commenti Bloccati sia attiva. Invece di registrare solo i commenti bloccati, questo consentirà al log di catturare tutti i commenti mentre la modalità di registrazione è attivata. Questo fornisce più dati tecnici per gli invii di commenti rispetto a quanto fornisce WordPress, e ci aiuta a migliorare il plugin.<br />Se prevedi di inviare campioni di spam per la nostra analisi, è utile attivare questa opzione, altrimenti non è necessario.', WPSS_PLUGIN_NAME ); ?></label>
+					<br /><a href="<?php echo WPSS_HOME_URL; ?>#wpss_configuration_log_all_comments" target="_blank" rel="external" ><?php _e( 'Per maggiori informazioni, consulta la documentazione.', WPSS_PLUGIN_NAME ); ?></a><br />&nbsp;
 					</li>
 					<li>
 					<label for="enhanced_comment_blacklist">
 						<input type="checkbox" id="enhanced_comment_blacklist" name="enhanced_comment_blacklist" <?php echo ($spamshield_options['enhanced_comment_blacklist']==TRUE?"checked=\"checked\"":"") ?> value="1" />
-						<strong><?php _e( 'Enhanced Comment Blacklist', WPSS_PLUGIN_NAME ); ?></strong><br /><?php _e( 'Enhances WordPress\'s Comment Blacklist - instead of just sending comments to moderation, they will be completely blocked. Also adds a link in the comment notification emails that will let you blacklist a commenter\'s IP with one click.<br />(Useful if you receive repetitive human spam or harassing comments from a particular commenter.)', WPSS_PLUGIN_NAME ); ?></label>
-					<br /><a href="<?php echo WPSS_HOME_URL; ?>#wpss_configuration_enhanced_comment_blacklist" target="_blank" rel="external" ><?php _e( 'For more about this, see the documentation.', WPSS_PLUGIN_NAME ); ?></a><br />&nbsp;
+						<strong><?php _e( 'Blacklist Commenti Avanzata', WPSS_PLUGIN_NAME ); ?></strong><br /><?php _e( 'Migliora la Blacklist dei Commenti di WordPress - invece di inviare i commenti in moderazione, verranno completamente bloccati. Aggiunge anche un link nelle email di notifica dei commenti che ti consentirà di inserire in blacklist l\'IP di un commentatore con un solo clic.<br />(Utile se ricevi spam umano ripetitivo o commenti fastidiosi da un commentatore in particolare.)', WPSS_PLUGIN_NAME ); ?></label>
+					<br /><a href="<?php echo WPSS_HOME_URL; ?>#wpss_configuration_enhanced_comment_blacklist" target="_blank" rel="external" ><?php _e( 'Per maggiori informazioni, consulta la documentazione.', WPSS_PLUGIN_NAME ); ?></a><br />&nbsp;
 					</li>
 					<label for="wordpress_comment_blacklist">
-						<strong><?php _e( 'Your current WordPress Comment Blacklist', WPSS_PLUGIN_NAME ); ?></strong><br /><?php _e( 'When a comment contains any of these words in its content, name, URL, e-mail, or IP, it will be completely blocked, not just marked as spam. One word or IP per line. It is not case-sensitive and will match included words, so "press" on your blacklist will block "WordPress" in a comment.', WPSS_PLUGIN_NAME ); ?><br />
+						<strong><?php _e( 'La tua attuale Blacklist dei Commenti di WordPress', WPSS_PLUGIN_NAME ); ?></strong><br /><?php _e( 'Quando un commento contiene una di queste parole nel contenuto, nel nome, nell\'URL, nell\'e-mail o nell\'IP, verrà completamente bloccato, non solo contrassegnato come spam. Una parola o IP per riga. Non fa distinzione tra maiuscole e minuscole e corrisponderà alle parole incluse, quindi "press" nella tua blacklist bloccherà "WordPress" in un commento.', WPSS_PLUGIN_NAME ); ?><br />
 						<textarea id="wordpress_comment_blacklist" name="wordpress_comment_blacklist" cols="80" rows="8" /><?php echo $wordpress_comment_blacklist; ?></textarea><br />
 					</label>
-					<?php _e( 'You can update this list here.', WPSS_PLUGIN_NAME ); ?> <a href="<?php echo RSMP_ADMIN_URL; ?>/options-discussion.php"><?php _e( 'You can also update it on the WordPress Discussion Settings page.', WPSS_PLUGIN_NAME ); ?></a><br />&nbsp;
+					<?php _e( 'Puoi aggiornare questa lista qui.', WPSS_PLUGIN_NAME ); ?> <a href="<?php echo RSMP_ADMIN_URL; ?>/options-discussion.php"><?php _e( 'Puoi anche aggiornarla nella pagina Impostazioni Discussione di WordPress.', WPSS_PLUGIN_NAME ); ?></a><br />&nbsp;
 					<li>
 					<label for="enable_whitelist">
 						<input type="checkbox" id="enable_whitelist" name="enable_whitelist" <?php echo ($spamshield_options['enable_whitelist']==TRUE?"checked=\"checked\"":"") ?> value="1" />
-						<strong><?php _e( 'Enable WP-SpamShield Whitelist', WPSS_PLUGIN_NAME ); ?></strong><br /><?php _e( 'Enables WP-SpamShield\'s Whitelist - for comments and contact form submissions. When a comment or contact form is submitted from an e-mail address on the whitelist, it will bypass spam filters and be allowed through.<br />(Useful if you have specific users that you want to let bypass the filters.)', WPSS_PLUGIN_NAME ); ?></label>
-					<br /><a href="<?php echo WPSS_HOME_URL; ?>#wpss_configuration_enable_whitelist" target="_blank" rel="external" ><?php _e( 'For more about this, see the documentation.', WPSS_PLUGIN_NAME ); ?></a><br />&nbsp;
+						<strong><?php _e( 'Abilita la Whitelist di WP-SpamShield', WPSS_PLUGIN_NAME ); ?></strong><br /><?php _e( 'Abilita la Whitelist di WP-SpamShield - per commenti e invii tramite moduli di contatto. Quando un commento o un modulo di contatto viene inviato da un indirizzo e-mail presente nella whitelist, aggirerà i filtri antispam e sarà consentito.<br />(Utile se hai utenti specifici a cui vuoi permettere di ignorare i filtri.)', WPSS_PLUGIN_NAME ); ?></label>
+					<br /><a href="<?php echo WPSS_HOME_URL; ?>#wpss_configuration_enable_whitelist" target="_blank" rel="external" ><?php _e( 'Per maggiori informazioni, consulta la documentazione.', WPSS_PLUGIN_NAME ); ?></a><br />&nbsp;
 					</li>
 					<label for="wpss_whitelist">
-						<strong><?php _e( 'Your current WP-SpamShield Whitelist', WPSS_PLUGIN_NAME ); ?></strong><br /><?php _e( 'One email address per line. Each entry must be a valid and complete email address, like <em>user@yourwebsite.com</em>. It is not case-sensitive and will only make exact matches, not partial matches.', WPSS_PLUGIN_NAME ); ?><br />
+						<strong><?php _e( 'La tua attuale Whitelist di WP-SpamShield', WPSS_PLUGIN_NAME ); ?></strong><br /><?php _e( 'Un indirizzo email per riga. Ogni voce deve essere un indirizzo email valido e completo, come <em>utente@iltuosito.com</em>. Non fa distinzione tra maiuscole e minuscole ed effettuerà solo corrispondenze esatte, non corrispondenze parziali.', WPSS_PLUGIN_NAME ); ?><br />
 						<textarea id="wpss_whitelist" name="wpss_whitelist" cols="80" rows="8" /><?php echo $wpss_whitelist; ?></textarea><br />&nbsp;
 					</label>
 					<li>
 					<label for="comment_min_length">
 						<?php $comment_min_length = trim(stripslashes($spamshield_options['comment_min_length'])); ?>
 						<input type="number" size="4" id="comment_min_length" name="comment_min_length" value="<?php if ( !empty( $comment_min_length ) && $comment_min_length >= 1 ) { echo $comment_min_length; } elseif ( empty( $form_message_width ) ) { echo '15'; } else { echo '1';} ?>" min="1" max="30" step="1" />
-						<strong><?php echo sprintf( __( 'Minimum comment length (# of characters). (Minimum %1$s, Default %2$s)', WPSS_PLUGIN_NAME ), '1', '15' ); ?></strong><br />&nbsp;
+						<strong><?php echo sprintf( __( 'Lunghezza minima del commento (numero di caratteri). (Minimo %1$s, Predefinito %2$s)', WPSS_PLUGIN_NAME ), '1', '15' ); ?></strong><br />&nbsp;
 					</label>
 					</li>
 <?php
 			$boolean_options_go = array(
-				array( 'block_all_trackbacks', __( 'Disable trackbacks.', WPSS_PLUGIN_NAME ), __( 'Use if trackback spam is excessive. (Not recommended)', WPSS_PLUGIN_NAME ) ),
-				array( 'block_all_pingbacks', __( 'Disable pingbacks.', WPSS_PLUGIN_NAME ), __( 'Use if pingback spam is excessive. Disadvantage is reduction of communication between blogs. (Not recommended)', WPSS_PLUGIN_NAME ) ),
-				array( 'allow_proxy_users', __( 'Allow users behind proxy servers to comment?', WPSS_PLUGIN_NAME ), __( 'Many human spammers hide behind proxies, so you can uncheck this option for extra protection. (For highest user compatibility, leave it checked.)', WPSS_PLUGIN_NAME ) ),
-				array( 'hide_extra_data', __( 'Hide extra technical data in comment notifications.', WPSS_PLUGIN_NAME ), __( 'This data is helpful if you need to submit a spam sample. If you dislike seeing the extra info, you can use this option.', WPSS_PLUGIN_NAME ) ),
-				array( 'registration_shield_disable', __( 'Disable Registration Spam Shield.', WPSS_PLUGIN_NAME ), __( 'This option will disable the anti-spam shield for the WordPress registration form only. While not recommended, this option is available if you need it. Anti-spam will still remain active for comments, pingbacks, trackbacks, and contact forms.', WPSS_PLUGIN_NAME ) ),
-				array( 'disable_cf7_shield', __( 'Disable anti-spam for Contact Form 7.', WPSS_PLUGIN_NAME ), __( 'This option will disable anti-spam protection for Contact Form 7 forms.', WPSS_PLUGIN_NAME ) ),
-				array( 'disable_gf_shield', __( 'Disable anti-spam for Gravity Forms.', WPSS_PLUGIN_NAME ), __( 'This option will disable anti-spam protection for Gravity Forms.', WPSS_PLUGIN_NAME ) ),
-				array( 'disable_misc_form_shield', __( 'Disable anti-spam for miscellaneous forms.', WPSS_PLUGIN_NAME ), __( 'This option will disable anti-spam protection for custom and miscellaneous forms on your site. (All forms that are not from WP-SpamShield, Contact Form 7, or Gravity Forms.)', WPSS_PLUGIN_NAME ) ),
-				array( 'disable_email_encode', __( 'Disable email harvester protection.', WPSS_PLUGIN_NAME ), __( 'This option will disable the automatic encoding of email addresses and mailto links in your website content.', WPSS_PLUGIN_NAME ) ),
-				array( 'allow_comment_author_keywords', __( 'Allow Keywords in Comment Author Names.', WPSS_PLUGIN_NAME ), sprintf( __( 'This will allow some keywords to be used in comment author names. By default, WP-SpamShield blocks many common spam keywords from being used in the comment "%1$s" field. This option is useful for sites with users that use pseudonyms, or for sites that simply want to allow business names and keywords to be used in the comment "%2$s" field. This option is not recommended, as it can potentially allow more human spam, but it is available if you choose. Your site will still be protected against all automated comment spam.', WPSS_PLUGIN_NAME ), __( 'Name' ), __( 'Name' ) ) ),
-				array( 'promote_plugin_link', __( 'Help promote WP-SpamShield?', WPSS_PLUGIN_NAME ), __( 'This places a small link under the comments and contact form, letting others know what\'s blocking spam on your blog.', WPSS_PLUGIN_NAME ) ),
+				array( 'block_all_trackbacks', __( 'Disabilita trackback.', WPSS_PLUGIN_NAME ), __( 'Usa se lo spam dai trackback è eccessivo. (Non consigliato)', WPSS_PLUGIN_NAME ) ),
+				array( 'block_all_pingbacks', __( 'Disabilita pingback.', WPSS_PLUGIN_NAME ), __( 'Usa se lo spam dai pingback è eccessivo. Lo svantaggio è la riduzione della comunicazione tra i blog. (Non consigliato)', WPSS_PLUGIN_NAME ) ),
+				array( 'allow_proxy_users', __( 'Consentire agli utenti dietro server proxy di commentare?', WPSS_PLUGIN_NAME ), __( 'Molti spammer umani si nascondono dietro ai proxy, quindi puoi deselezionare questa opzione per una protezione aggiuntiva. (Per la massima compatibilità con gli utenti, lasciala selezionata.)', WPSS_PLUGIN_NAME ) ),
+				array( 'hide_extra_data', __( 'Nascondi dati tecnici extra nelle notifiche dei commenti.', WPSS_PLUGIN_NAME ), __( 'Questi dati sono utili se devi inviare un campione di spam. Se non ti piace vedere le informazioni extra, puoi usare questa opzione.', WPSS_PLUGIN_NAME ) ),
+				array( 'registration_shield_disable', __( 'Disabilita Protezione Registrazione.', WPSS_PLUGIN_NAME ), __( 'Questa opzione disabiliterà lo scudo antispam solo per il modulo di registrazione di WordPress. Sebbene non consigliato, questa opzione è disponibile in caso di necessità. L\'antispam rimarrà attivo per commenti, pingback, trackback e moduli di contatto.', WPSS_PLUGIN_NAME ) ),
+				array( 'disable_cf7_shield', __( 'Disabilita antispam per Contact Form 7.', WPSS_PLUGIN_NAME ), __( 'Questa opzione disabiliterà la protezione antispam per i moduli di Contact Form 7.', WPSS_PLUGIN_NAME ) ),
+				array( 'disable_gf_shield', __( 'Disabilita antispam per Gravity Forms.', WPSS_PLUGIN_NAME ), __( 'Questa opzione disabiliterà la protezione antispam per Gravity Forms.', WPSS_PLUGIN_NAME ) ),
+				array( 'disable_misc_form_shield', __( 'Disabilita antispam per moduli vari.', WPSS_PLUGIN_NAME ), __( 'Questa opzione disabiliterà la protezione antispam per i moduli personalizzati e vari sul tuo sito. (Tutti i moduli che non provengono da WP-SpamShield, Contact Form 7 o Gravity Forms.)', WPSS_PLUGIN_NAME ) ),
+				array( 'disable_email_encode', __( 'Disabilita la protezione dai raccoglitori di email.', WPSS_PLUGIN_NAME ), __( 'Questa opzione disabiliterà la codifica automatica degli indirizzi email e dei link mailto nel contenuto del tuo sito web.', WPSS_PLUGIN_NAME ) ),
+				array( 'allow_comment_author_keywords', __( 'Consenti parole chiave nei nomi degli autori dei commenti.', WPSS_PLUGIN_NAME ), sprintf( __( 'Questo consentirà l\'uso di alcune parole chiave nei nomi degli autori dei commenti. Per impostazione predefinita, WP-SpamShield impedisce l\'uso di molte parole chiave di spam comuni nel campo "%1$s" del commento. Questa opzione è utile per i siti con utenti che usano pseudonimi o per i siti che desiderano semplicemente consentire nomi aziendali e parole chiave nel campo "%2$s" del commento. Questa opzione non è raccomandata, poiché potrebbe consentire più spam umano, ma è disponibile se lo desideri. Il tuo sito sarà comunque protetto contro tutto lo spam automatizzato nei commenti.', WPSS_PLUGIN_NAME ), __( 'Nome' ), __( 'Nome' ) ) ),
+				array( 'promote_plugin_link', __( 'Aiutare a promuovere WP-SpamShield?', WPSS_PLUGIN_NAME ), __( 'Questo posiziona un piccolo link sotto i commenti e il modulo di contatto, facendo sapere agli altri cosa sta bloccando lo spam sul tuo blog.', WPSS_PLUGIN_NAME ) ),
 				);
 			foreach( $boolean_options_go as $i => $v ) {
 				$checked = $spamshield_options[$v[0]]==TRUE ? 'checked="checked" ' : '';
@@ -7257,11 +7220,11 @@ if (!class_exists('WP_SpamShield')) {
 				</ul>
 			</fieldset>
 			<p class="submit">
-			<input type="submit" name="submit_wpss_general_options" value="<?php _e( 'Save Changes' ); ?>" class="button-primary" style="float:left;" />
+			<input type="submit" name="submit_wpss_general_options" value="<?php _e( 'Salva le modifiche' ); ?>" class="button-primary" style="float:left;" />
 			</p>
 			</form>
 			<p>&nbsp;</p>
-			<p><div style="float:right;font-size:12px;">[ <a href="#wpss_top"><?php _e( 'BACK TO TOP', WPSS_PLUGIN_NAME ); ?></a> ]</div></p>
+			<p><div style="float:right;font-size:12px;">[ <a href="#wpss_top"><?php _e( 'TORNA SU', WPSS_PLUGIN_NAME ); ?></a> ]</div></p>
 			<p>&nbsp;</p>
 			</div>
 			<div style='width:797px;border-style:solid;border-width:1px;border-color:#003366;background-color:#DDEEFF;padding:0px 15px 0px 15px;margin-top:<?php echo $wpss_vert_margins; ?>px;margin-right:<?php echo $wpss_horz_margins; ?>px;float:left;clear:left;'>
@@ -7355,70 +7318,8 @@ if (!class_exists('WP_SpamShield')) {
 			</p>
 			</form>
 			<p>&nbsp;</p>
-			<p><div style="float:right;font-size:12px;">[ <a href="#wpss_top"><?php _e( 'BACK TO TOP', WPSS_PLUGIN_NAME ); ?></a> ]</div></p>
-			<p>&nbsp;</p>
-			</div>
-			<div style='width:797px;border-style:solid;border-width:1px;border-color:#333333;background-color:#FEFEFE;padding:0px 15px 0px 15px;margin-top:<?php echo $wpss_vert_margins; ?>px;margin-right:<?php echo $wpss_horz_margins; ?>px;float:left;clear:left;'>
-  			<p><a name="wpss_let_others_know"><h3><?php _e( 'Let Others Know About WP-SpamShield', WPSS_PLUGIN_NAME ); ?></h3></a></p>
-			<p><?php _e( '<strong>How does it feel to blog without being bombarded by automated comment spam?</strong> If you\'re happy with WP-SpamShield, there\'s a few things you can do to let others know:', WPSS_PLUGIN_NAME ); ?></p>
-			<ul style="list-style-type:disc;padding-left:30px;">
-				<li><a href="http://www.redsandmarketing.com/blog/wp-spamshield-wordpress-plugin-released/#comments" target="_blank" rel="external" ><?php _e( 'Leave a Comment' ); ?></a></li>
-				<li><a href="<?php echo WPSS_WP_RATING_URL; ?>" target="_blank" rel="external" ><?php _e( 'Give WP-SpamShield a good rating on WordPress.org.', WPSS_PLUGIN_NAME ); ?></a></li>
-				<li><a href="<?php echo WPSS_HOME_URL; ?>end-blog-spam/" target="_blank" rel="external" ><?php _e( 'Place a graphic link on your site.', WPSS_PLUGIN_NAME ); ?></a> <?php _e( 'Let others know how they can help end blog spam.', WPSS_PLUGIN_NAME ); ?> ( &lt;/BLOGSPAM&gt; )</li>
-			</ul>
-			<p><a href="<?php echo WPSS_HOME_URL; ?>" style="border-style:none;text-decoration:none;" target="_blank" rel="external" ><img src="<?php echo WPSS_PLUGIN_IMG_URL; ?>/end-blog-spam-button-01-black.png" alt="End Blog Spam! WP-SpamShield Comment Spam Protection for WordPress" width="140" height="66" style="border-style:none;text-decoration:none;margin-top:15px;margin-left:15px;" /></a></p>
-			<p><div style="float:right;font-size:12px;">[ <a href="#wpss_top"><?php _e( 'BACK TO TOP', WPSS_PLUGIN_NAME ); ?></a> ]</div></p>
-			<p>&nbsp;</p>
-			</div>
-			<div style='width:797px;border-style:solid;border-width:1px;border-color:#003366;background-color:#DDEEFF;padding:0px 15px 0px 15px;margin-top:<?php echo $wpss_vert_margins; ?>px;margin-right:<?php echo $wpss_horz_margins; ?>px;float:left;clear:left;'>
-			<p><a name="wpss_download_plugin_documentation"><h3><?php echo rs_wpss_doc_txt(); ?></h3></a></p>
-			<p><?php echo __( 'Plugin Homepage', WPSS_PLUGIN_NAME ) . ' / ' . rs_wpss_doc_txt(); ?>: <a href="<?php echo WPSS_HOME_URL; ?>" target="_blank" rel="external" >WP-SpamShield</a><br />
-			<?php _e( 'Leave a Comment' ); ?>: <a href="http://www.redsandmarketing.com/blog/wp-spamshield-wordpress-plugin-released/" target="_blank" rel="external" ><?php _e( 'WP-SpamShield Release Announcement Blog Post', WPSS_PLUGIN_NAME ); ?></a><br />
-			<?php _e( 'WordPress.org Page', WPSS_PLUGIN_NAME ); ?>: <a href="<?php echo WPSS_WP_URL; ?>" target="_blank" rel="external" >WP-SpamShield</a><br />
-			<?php _e( 'Tech Support / Questions', WPSS_PLUGIN_NAME ); ?>: <a href="<?php echo WPSS_SUPPORT_URL; ?>" target="_blank" rel="external" ><?php _e( 'WP-SpamShield Support Page', WPSS_PLUGIN_NAME ); ?></a><br />
-			<?php _e( 'End Blog Spam', WPSS_PLUGIN_NAME ); ?>: <a href="<?php echo WPSS_HOME_URL; ?>end-blog-spam/" target="_blank" rel="external" ><?php _e( 'Let Others Know About WP-SpamShield', WPSS_PLUGIN_NAME ); ?>!</a><br />
-			Twitter: <a href="http://twitter.com/WPSpamShield" target="_blank" rel="external" >@WPSpamShield</a><br />
-			<?php 
-			if ( rs_wpss_is_lang_en_us() ) {
-				echo 'Need WordPress Consulting? <a href="http://www.redsandmarketing.com/web-design/wordpress-consulting/" target="_blank" rel="external" >We can help.</a><br />';
-				}
-			?>
-            <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank" style="margin-top:10px;">
-            <input type="hidden" name="cmd" value="_s-xclick">
-            <input type="hidden" name="hosted_button_id" value="DFMTNHJEPFFUL">
-            <input type="image" src="<?php echo WPSS_PLUGIN_IMG_URL; ?>/btn-donate-sm.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!" />
-            <img alt="" border="0" src="<?php echo WPSS_PLUGIN_IMG_URL; ?>/spacer.gif" width="1" height="1" />
-            </form>
-			</p>
-			<?php 
-			echo '<p><strong><a href="'.WPSS_DONATE_URL.'" target="_blank" rel="external" >' . __( 'Donate to WP-SpamShield', WPSS_PLUGIN_NAME ) . '</a></strong><br />' . __( 'WP-SpamShield is provided for free.', WPSS_PLUGIN_NAME ) . ' ' . __( 'If you like the plugin, consider a donation to help further its development.', WPSS_PLUGIN_NAME ) . '</p>';
-			?>
-
-			<p><div style="float:right;font-size:12px;">[ <a href="#wpss_top"><?php _e( 'BACK TO TOP', WPSS_PLUGIN_NAME ); ?></a> ]</div></p>
-			<p>&nbsp;</p>
 			</div>
 
-			<?php
-			/* Recommended Partners - BEGIN - Added in 1.6.9 */
-			if ( rs_wpss_is_lang_en_us() ) {
-			?>
-
-			<div style='width:797px;border-style:solid;border-width:1px;border-color:#333333;background-color:#FEFEFE;padding:0px 15px 0px 15px;margin-top:<?php echo $wpss_vert_margins; ?>px;margin-right:<?php echo $wpss_horz_margins; ?>px;float:left;clear:left;'>
-			<p><h3>Recommended Partners</h3></p>
-			<p>Each of these products or services are ones that we highly recommend, based on our experience and the experience of our clients. We do receive a commission if you purchase one of these, but these are all products and services we were already recommending because we believe in them. By purchasing from these providers, you get quality and you help support the further development of WP-SpamShield.</p></div>
-
-			<?php
-				$wpss_rpd	= array(
-					array('clear:left;','RSM_Genesis','Genesis WordPress Framework','Other themes and frameworks have nothing on Genesis. Optimized for site speed and SEO.','Simply put, the Genesis framework is one of the best ways to design and build a WordPress site. Built-in SEO and optimized for speed. Create just about any kind of design with child themes.'),
-					array('','RSM_AIOSEOP','All in One SEO Pack Pro','The best way to manage the code-related SEO for your WordPress site.','Save time and effort optimizing the code of your WordPress site with All in One SEO Pack. One of the top rated, and most downloaded plugins on WordPress.org, this time-saving plugin is incredibly valuable. The pro version provides powerful features not available in the free version.'),
-					);
-				foreach( $wpss_rpd as $i => $v ) {
-					echo '<div style="width:375px;height:280px;border-style:solid;border-width:1px;border-color:#333333;background-color:#FEFEFE;padding:0px 15px 0px 15px;margin-top:'.$wpss_vert_margins.'px;margin-right:'.$wpss_horz_margins.'px;float:left;'.$v[0].'">'.WPSS_EOL.'<p><strong><a href="http://bit.ly/'.$v[1].'" target="_blank" rel="external" >'.$v[2].'</a></strong></p>'.WPSS_EOL.'<p><strong>'.$v[3].'</strong></p>'.WPSS_EOL.'<p>'.$v[4].'</p>'.WPSS_EOL.'<p><a href="http://bit.ly/'.$v[1].'" target="_blank" rel="external" >Click here to find out more. &raquo;</a></p>'.WPSS_EOL.'</div>'.WPSS_EOL;
-					}
-
-				}
-			/* Recommended Partners - END - Added in 1.6.9 */
-			?>
 			<p style="clear:both;">&nbsp;</p>
 			<p style="clear:both;"><em><?php 
 			$this->settings_ver_ftr();
