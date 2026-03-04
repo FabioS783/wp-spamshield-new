@@ -5150,7 +5150,7 @@ function rs_wpss_misc_form_spam_check() {
 	if ( empty( $_POST ) || 'POST' !== $_SERVER['REQUEST_METHOD'] || isset( $_POST[WPSS_REF2XJS] ) || isset( $_POST[WPSS_JSONST] ) || isset( $_POST['wpss_contact_message'] ) || isset( $_POST['signup_username'] ) || isset( $_POST['signup_email'] ) || isset( $_POST['ws_plugin__s2member_registration'] ) || isset( $_POST['_wpcf7_version'] ) || isset( $_POST['gform_submit'] ) || isset( $_POST['gform_unique_id'] ) ) { return; }
 	if ( is_admin() && !rs_wpss_is_login_page() ) { return; }
 	if ( rs_wpss_is_login_page() && ( !isset( $_GET['action'] ) || $_GET['action'] !== 'register' ) ) { return; }
-	if ( rs_wpss_is_doing_ajax() || rs_wpss_is_doing_cron() || rs_wpss_is_xmlrpc() || defined( 'WP_INSTALLING' ) ) { return; }
+	if ( rs_wpss_is_doing_ajax() || rs_wpss_is_doing_cron() || rs_wpss_is_xmlrpc() || defined( 'WP_INSTALLING' ) || ( defined( 'REST_REQUEST' ) && REST_REQUEST ) || strpos( $_SERVER['REQUEST_URI'], '/wp-json/' ) !== FALSE ) { return; }
 	if ( rs_wpss_is_ajax_request() || rs_wpss_is_comment_request() || is_trackback() ) { return; }
 	if ( current_user_can( 'moderate_comments' ) ) { return; }
 	if ( is_user_logged_in() ) { return; } /* May remove later */
