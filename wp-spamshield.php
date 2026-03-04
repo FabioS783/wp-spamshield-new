@@ -2,9 +2,9 @@
 /*
 Plugin Name: WP-SpamShield
 Plugin URI: http://www.redsandmarketing.com/plugins/wp-spamshield/
-Description: An extremely powerful and user-friendly all-in-one anti-spam plugin that <strong>eliminates comment spam, trackback spam, contact form spam, and registration spam</strong>. No CAPTCHA's, challenge questions, or other inconvenience to website visitors. Enjoy running a WordPress site without spam! Includes a spam-blocking contact form feature.
-Author: Scott Allen
-Version: 1.9.5.5
+Description: Un plugin antispam estremamente potente e facile da usare che <strong>elimina lo spam nei commenti, trackback, moduli di contatto e registrazioni</strong>. Nessun CAPTCHA, domande di sicurezza o altri disagi per i visitatori. Goditi un sito WordPress senza spam!
+Author: Scott Allen & DF Staff
+Version: 2.0.1
 Author URI: http://www.redsandmarketing.com/
 Text Domain: wp-spamshield
 License: GPLv2
@@ -41,7 +41,7 @@ if( !defined( 'ABSPATH' ) ) {
 	die( 'ERROR: This plugin requires WordPress and will not function if called directly.' );
 	}
 
-define( 'WPSS_VERSION', '1.9.5.5' );
+define( 'WPSS_VERSION', '2.0.1' );
 define( 'WPSS_REQUIRED_WP_VERSION', '3.9' );
 define( 'WPSS_REQUIRED_PHP_VERSION', '5.3' );
 /***
@@ -105,7 +105,7 @@ if( !defined( 'RSMP_PHP_MEM_LIMIT' ) ) 			{ $wpss_php_memory_limit = rs_wpss_for
 $popular_cache_plugins_default 					= array ( 'cachify', 'db-cache-reloaded', 'db-cache-reloaded-fix', 'gator-cache', 'hyper-cache', 'hyper-cache-extended', 'lite-cache', 'quick-cache', 'w3-total-cache', 'wp-fast-cache', 'wp-fastest-cache', 'wp-super-cache', 'zencache', 'zencache-pro' );
 if( !defined( 'WPSS_POPULAR_CACHE_PLUGINS' ) ) { define( 'WPSS_POPULAR_CACHE_PLUGINS', serialize( $popular_cache_plugins_default ) ); }
 /* SET THE DEFAULT CONSTANT VALUES HERE */
-$wpss_options_default							= array ( 'block_all_trackbacks' => 0, 'block_all_pingbacks' => 0, 'comment_logging' => 0, 'comment_logging_start_date' => 0, 'comment_logging_all' => 0, 'enhanced_comment_blacklist' => 0, 'enable_whitelist' => 0, 'comment_min_length' => 15, 'allow_proxy_users' => 1, 'hide_extra_data' => 0, 'registration_shield_disable' => 0, 'registration_shield_level_1' => 0, 'disable_cf7_shield' => 0, 'disable_gf_shield' => 0, 'disable_misc_form_shield' => 0, 'disable_email_encode' => 0, 'allow_comment_author_keywords' => 0, 'form_include_website' => 1, 'form_require_website' => 0, 'form_include_phone' => 1, 'form_require_phone' => 0, 'form_include_company' => 0, 'form_require_company' => 0, 'form_include_drop_down_menu' => 0, 'form_require_drop_down_menu' => 0, 'form_drop_down_menu_title' => '', 'form_drop_down_menu_item_1' => '', 'form_drop_down_menu_item_2' => '', 'form_drop_down_menu_item_3' => '', 'form_drop_down_menu_item_4' => '', 'form_drop_down_menu_item_5' => '', 'form_drop_down_menu_item_6' => '', 'form_drop_down_menu_item_7' => '', 'form_drop_down_menu_item_8' => '', 'form_drop_down_menu_item_9' => '', 'form_drop_down_menu_item_10' => '', 'form_message_width' => 40, 'form_message_height' => 10, 'form_message_min_length' => 25, 'form_response_thank_you_message' => __( 'Your message was sent successfully. Thank you.', WPSS_PLUGIN_NAME ), 'form_include_user_meta' => 1, 'promote_plugin_link' => 0, );
+$wpss_options_default							= array ( 'block_all_trackbacks' => 0, 'block_all_pingbacks' => 0, 'comment_logging' => 0, 'comment_logging_start_date' => 0, 'comment_logging_all' => 0, 'enhanced_comment_blacklist' => 0, 'enable_whitelist' => 0, 'comment_min_length' => 15, 'allow_proxy_users' => 1, 'hide_extra_data' => 0, 'registration_shield_disable' => 0, 'registration_shield_level_1' => 0, 'disable_cf7_shield' => 0, 'disable_gf_shield' => 0, 'disable_misc_form_shield' => 0, 'disable_email_encode' => 0, 'allow_comment_author_keywords' => 0, 'form_include_website' => 1, 'form_require_website' => 0, 'form_include_phone' => 1, 'form_require_phone' => 0, 'form_include_company' => 0, 'form_require_company' => 0, 'form_include_drop_down_menu' => 0, 'form_require_drop_down_menu' => 0, 'form_drop_down_menu_title' => '', 'form_drop_down_menu_item_1' => '', 'form_drop_down_menu_item_2' => '', 'form_drop_down_menu_item_3' => '', 'form_drop_down_menu_item_4' => '', 'form_drop_down_menu_item_5' => '', 'form_drop_down_menu_item_6' => '', 'form_drop_down_menu_item_7' => '', 'form_drop_down_menu_item_8' => '', 'form_drop_down_menu_item_9' => '', 'form_drop_down_menu_item_10' => '', 'form_message_width' => 40, 'form_message_height' => 10, 'form_message_min_length' => 25, 'form_response_thank_you_message' => __( 'Your message was sent successfully. Thank you.', WPSS_PLUGIN_NAME ), 'form_include_user_meta' => 1 );
 if( !defined( 'WPSS_OPTIONS_DEFAULT' ) ) 		{ define( 'WPSS_OPTIONS_DEFAULT', serialize( $wpss_options_default ) ); }
 $wpss_depr_options_default 						= array( 'wpss_version' => '', 'init_user_approve_run' => '', 'install_status' => '', 'warning_status' => '', 'regalert_status' => '', 'last_admin' => '', 'wpss_admins' => array(), 'reg_count' => 0, 'spam_count' => 0, 'wpssmid_cache' => array(), 'wpss_procdat' => array( 'total_tracked' => 0, 'total_wpss_time' => 0, 'avg_wpss_proc_time' => 0, 'total_comment_proc_time' => 0, 'avg_comment_proc_time' => 0, 'total_wpss_avg_tracked' => 0, 'total_avg_wpss_proc_time' => 0, 'avg2_wpss_proc_time' => 0 ), );
 if( !defined( 'WPSS_DEPR_OPTIONS_DEFAULT' ) ) 	{ define( 'WPSS_DEPR_OPTIONS_DEFAULT', serialize( $wpss_depr_options_default ) ); }
@@ -145,6 +145,7 @@ function rs_wpss_ds() {
 	}
 
 function rs_wpss_start_session() {
+	if ( is_admin() || rs_wpss_is_doing_ajax() || rs_wpss_is_doing_cron() ) { return; }
 	global $wpss_session_id;
 	if( empty( $wpss_session_id ) ) { $wpss_session_id = session_id(); }
 	if( empty( $wpss_session_id ) && !headers_sent() ) { session_start(); $wpss_session_id = session_id(); }
@@ -1188,7 +1189,7 @@ function rs_wpss_load_languages() {
 	}
 
 function rs_wpss_first_action() {
-	if ( rs_wpss_is_admin_sproc() ) { return; }
+	if ( is_admin() || rs_wpss_is_admin_sproc() || rs_wpss_is_doing_ajax() || rs_wpss_is_doing_cron() ) { return; }
 	rs_wpss_start_session();
 	/* Add all commands after this */
 
@@ -2136,7 +2137,6 @@ function rs_wpss_comment_form_append() {
 	if ( rs_wpss_is_admin_sproc() ) { return; }
 	global $spamshield_options; if ( empty( $spamshield_options ) ) { $spamshield_options = get_option('spamshield_options'); }
 	rs_wpss_update_session_data($spamshield_options);
-	$promote_plugin_link 	= $spamshield_options['promote_plugin_link'];
 	if ( TRUE === WPSS_COMPAT_MODE ) {
 		$wpss_key_values 		= rs_wpss_get_key_values();
 		$wpss_js_key 			= $wpss_key_values['wpss_js_key'];
@@ -2148,12 +2148,6 @@ function rs_wpss_comment_form_append() {
 		}
 	echo WPSS_EOL.'<noscript><input type="hidden" name="'.WPSS_JSONST.'" value="NS1" /></noscript>'.WPSS_EOL;
 
-	if ( !empty( $promote_plugin_link ) ) {
-		$sip5c = '0'; $sip5c = substr(WPSS_SERVER_ADDR, 4, 1); /* Server IP 5th Char */
-		$ppl_code = array( '0' => 0, '1' => 1, '2' => 2, '3' => 3, '4' => 4, '5' => 5, '6' => 6, '7' => 7, '8' => 8, '9' => 9, '.' => 10 );
-		if ( preg_match( "~^[0-9\.]$~", $sip5c ) ) { $int = $ppl_code[$sip5c]; } else { $int = 0; }
-		echo WPSS_Promo_Links::comment_promo_link($int).WPSS_EOL;
-		}
 	$wpss_js_disabled_msg 	= __( 'Currently you have JavaScript disabled. In order to post comments, please make sure JavaScript and Cookies are enabled, and reload the page.', WPSS_PLUGIN_NAME );
 	$wpss_js_enable_msg 	= __( 'Click here for instructions on how to enable JavaScript in your browser.', WPSS_PLUGIN_NAME );
 	echo '<noscript><p><strong>'.$wpss_js_disabled_msg.'</strong> <a href="http://enable-javascript.com/" rel="nofollow external" >'.$wpss_js_enable_msg.'</a></p></noscript>'.WPSS_EOL;
@@ -3069,17 +3063,6 @@ function rs_wpss_contact_form( $content = NULL, $shortcode_check = NULL ) {
 			$cf_content .= '<p><input type="submit" id="wpss_contact_submit" name="wpss_contact_submit" value="' . __( 'Send Message', WPSS_PLUGIN_NAME ) . '" /></p>'.WPSS_EOL;
 			$cf_content .= '<p>' . sprintf( __( 'Required fields are marked %s' ), '*' ) . '</p>'.WPSS_EOL;
 			$cf_content .= '<p>&nbsp;</p>'.WPSS_EOL;
-			if ( !empty( $promote_plugin_link ) ) {
-				$sip5c = '0';
-				$sip5c = substr(WPSS_SERVER_ADDR, 4, 1); /* Server IP 5th Char */
-				$ppl_code = array( '0' => 2, '1' => 2, '2' => 2, '3' => 2, '4' => 2, '5' => 2, '6' => 1, '7' => 0, '8' => 2, '9' => 2, '.' => 2 );
-				if ( preg_match( "~^[0-9\.]$~", $sip5c ) ) {
-					$int = $ppl_code[$sip5c];
-					}
-				else { $int = 0; }
-				$cf_content .= WPSS_Promo_Links::contact_promo_link($int).WPSS_EOL;
-				$cf_content .= '<p>&nbsp;</p>'.WPSS_EOL;
-				}
 			$cf_content .= '</form>'.WPSS_EOL;
 
 			/* PRE-TESTS, WILL DISABLE CONTACT FORM */
@@ -5167,7 +5150,7 @@ function rs_wpss_misc_form_spam_check() {
 	if ( empty( $_POST ) || 'POST' !== $_SERVER['REQUEST_METHOD'] || isset( $_POST[WPSS_REF2XJS] ) || isset( $_POST[WPSS_JSONST] ) || isset( $_POST['wpss_contact_message'] ) || isset( $_POST['signup_username'] ) || isset( $_POST['signup_email'] ) || isset( $_POST['ws_plugin__s2member_registration'] ) || isset( $_POST['_wpcf7_version'] ) || isset( $_POST['gform_submit'] ) || isset( $_POST['gform_unique_id'] ) ) { return; }
 	if ( is_admin() && !rs_wpss_is_login_page() ) { return; }
 	if ( rs_wpss_is_login_page() && ( !isset( $_GET['action'] ) || $_GET['action'] !== 'register' ) ) { return; }
-	if ( rs_wpss_is_doing_ajax() || rs_wpss_is_doing_cron() || rs_wpss_is_xmlrpc() || defined( 'WP_INSTALLING' ) ) { return; }
+	if ( rs_wpss_is_doing_ajax() || rs_wpss_is_doing_cron() || rs_wpss_is_xmlrpc() || defined( 'WP_INSTALLING' ) || ( defined( 'REST_REQUEST' ) && REST_REQUEST ) || strpos( $_SERVER['REQUEST_URI'], '/wp-json/' ) !== FALSE ) { return; }
 	if ( rs_wpss_is_ajax_request() || rs_wpss_is_comment_request() || is_trackback() ) { return; }
 	if ( current_user_can( 'moderate_comments' ) ) { return; }
 	if ( is_user_logged_in() ) { return; } /* May remove later */
@@ -5895,6 +5878,23 @@ function rs_wpss_blacklist_check( $author, $email, $url, $content, $user_ip, $us
 	 * @param string $user_agent 	Comment or Contact Form author's browser / user agent.
 	 * @param string $user_server	Comment or Contact Form author's server (reverse DNS of IP).
 	 */
+
+	global $spamshield_options; if ( empty( $spamshield_options ) ) { $spamshield_options = get_option('spamshield_options'); }
+	if ( !empty( $spamshield_options['enable_stopforumspam'] ) ) {
+		$sfs_url = 'https://api.stopforumspam.org/api?ip=' . urlencode( $user_ip ) . '&email=' . urlencode( $email ) . '&json';
+		$sfs_response = wp_remote_get( $sfs_url, array( 'timeout' => 5 ) );
+		if ( !is_wp_error( $sfs_response ) && wp_remote_retrieve_response_code( $sfs_response ) === 200 ) {
+			$sfs_body = wp_remote_retrieve_body( $sfs_response );
+			$sfs_data = json_decode( $sfs_body, true );
+			if ( !empty( $sfs_data['success'] ) ) {
+				if ( ( isset( $sfs_data['ip']['appears'] ) && $sfs_data['ip']['appears'] ) || ( isset( $sfs_data['email']['appears'] ) && $sfs_data['email']['appears'] ) ) {
+					$current_sfs_count = get_option('spamshield_sfs_count', 0);
+					update_option( 'spamshield_sfs_count', $current_sfs_count + 1 );
+					return TRUE;
+				}
+			}
+		}
+	}
 
 	$blacklist_keys = trim(stripslashes(get_option('blacklist_keys')));
 	if ( empty( $blacklist_keys ) ) { return FALSE; } /* If blacklist keys are empty */
@@ -6799,14 +6799,6 @@ if (!class_exists('WP_SpamShield')) {
 			}
 
 		function filter_plugin_meta( $links, $file ) {
-			/* Add Links on Dashboard Plugins page, in plugin meta */
-			if ( rs_wpss_is_admin_sproc( TRUE ) ) { return $links; }
-			if ( $file === WPSS_PLUGIN_BASENAME ) { /* After other links */
-				$links[] = '<a href="'.WPSS_HOME_URL.'" target="_blank" rel="external" >' . rs_wpss_doc_txt() . '</a>';
-				$links[] = '<a href="'.WPSS_SUPPORT_URL.'" target="_blank" rel="external" >' . __( 'Support', WPSS_PLUGIN_NAME ) . '</a>';
-				if ( rs_wpss_count() >= 2000 ) { $links[] = '<a href="'.WPSS_WP_RATING_URL.'" title="' . __( 'Let others know by giving it a good rating on WordPress.org!', WPSS_PLUGIN_NAME ) . '" target="_blank" rel="external" >' . __( 'Rate the Plugin', WPSS_PLUGIN_NAME ) . '</a>'; }
-				$links[] = '<a href="'.WPSS_DONATE_URL.'" target="_blank" rel="external" >' . __( 'Donate', WPSS_PLUGIN_NAME ) . '</a>';
-				}
 			return $links;
 			}
 
@@ -6857,13 +6849,18 @@ if (!class_exists('WP_SpamShield')) {
 				$spam_stat_href_attr = 'target="_blank" rel="external"';
 				}
 
+			$sfs_count = get_option('spamshield_sfs_count', 0);
+
 			if ( empty( $spam_count_raw ) ) {
-				echo '<p>' . __( 'No comment spam attempts have been detected yet.', WPSS_PLUGIN_NAME ) . $spam_stat_incl_link;
+				echo '<p>' . __( 'Nessun tentativo di spam nei commenti è stato ancora rilevato.', WPSS_PLUGIN_NAME ) . $spam_stat_incl_link;
 				}
 			else {
-				echo '<p>'."<img src='".WPSS_PLUGIN_IMG_URL."/dashboard-spam-protection-24.png' alt='' width='24' height='24' style='border-style:none;vertical-align:middle;padding-right:7px;' />".' <a href="'.$spam_stat_url.'" '.$spam_stat_href_attr.'>WP-SpamShield</a> '.sprintf( __( 'has blocked <strong> %s </strong> spam.', WPSS_PLUGIN_NAME ), rs_wpss_number_format( $spam_count_raw ) ).'</p>'.WPSS_EOL;
+				echo '<p>'."<img src='".WPSS_PLUGIN_IMG_URL."/dashboard-spam-protection-24.png' alt='' width='24' height='24' style='border-style:none;vertical-align:middle;padding-right:7px;' />".' <a href="'.$spam_stat_url.'" '.$spam_stat_href_attr.'>WP-SpamShield</a> '.sprintf( __( 'ha bloccato <strong> %s </strong> spam.', WPSS_PLUGIN_NAME ), rs_wpss_number_format( $spam_count_raw ) ).'</p>'.WPSS_EOL;
 				if ( $avg_blk_dly >= 2 ) {
-					echo "<p><img src='".WPSS_PLUGIN_IMG_URL."/spacer.gif' alt='' width='24' height='24' style='border-style:none;vertical-align:middle;padding-right:7px;' /> " . __( 'Average spam blocked daily', WPSS_PLUGIN_NAME ) . ": <strong>".$avg_blk_dly_d."</strong></p>".WPSS_EOL;
+					echo "<p><img src='".WPSS_PLUGIN_IMG_URL."/spacer.gif' alt='' width='24' height='24' style='border-style:none;vertical-align:middle;padding-right:7px;' /> " . __( 'Media spam bloccato giornalmente', WPSS_PLUGIN_NAME ) . ": <strong>".$avg_blk_dly_d."</strong></p>".WPSS_EOL;
+					}
+				if ( $sfs_count > 0 ) {
+					echo "<p><img src='".WPSS_PLUGIN_IMG_URL."/spacer.gif' alt='' width='24' height='24' style='border-style:none;vertical-align:middle;padding-right:7px;' /> " . __( 'Di cui bloccati tramite StopForumSpam', WPSS_PLUGIN_NAME ) . ": <strong>".rs_wpss_number_format($sfs_count)."</strong></p>".WPSS_EOL;
 					}
 				}
 			}
@@ -6922,9 +6919,6 @@ if (!class_exists('WP_SpamShield')) {
 			if ( !empty( $_REQUEST['submit_wpss_general_options'] ) && rs_wpss_is_user_admin() && check_admin_referer('wpss_update_general_options_token','ugo_tkn') ) {
 				echo '<div class="updated fade"><p>' . __( 'Plugin Spam settings saved.', WPSS_PLUGIN_NAME ) . '</p></div>';
 				}
-			if ( !empty( $_REQUEST['submit_wpss_contact_options'] ) && rs_wpss_is_user_admin() && check_admin_referer('wpss_update_contact_options_token','uco_tkn') ) {
-				echo '<div class="updated fade"><p>' . __( 'Plugin Contact Form settings saved.', WPSS_PLUGIN_NAME ) . '</p></div>';
-				}
 
 			/* Add IP to Blacklist */
 			$ip_to_blacklist = $ip_blacklist_nonce_value = '';
@@ -6938,7 +6932,7 @@ if (!class_exists('WP_SpamShield')) {
 				$ip_blacklist_nonce_value	= $_REQUEST[$ip_blacklist_nonce_name];
 				}
 			if ( !empty( $_REQUEST['wpss_action'] ) ) { $wpss_action = $_REQUEST['wpss_action']; } else { $wpss_action = ''; }
-			if ( $wpss_action === 'blacklist_ip' && !empty( $_REQUEST['bl_ip'] ) && !empty( $_REQUEST[$ip_blacklist_nonce_name] ) && rs_wpss_is_user_admin() && empty( $_REQUEST['submit_wpss_general_options'] ) && empty( $_REQUEST['submit_wpss_contact_options'] ) ) {
+			if ( $wpss_action === 'blacklist_ip' && !empty( $_REQUEST['bl_ip'] ) && !empty( $_REQUEST[$ip_blacklist_nonce_name] ) && rs_wpss_is_user_admin() && empty( $_REQUEST['submit_wpss_general_options'] ) ) {
 				if ( rs_wpss_verify_nonce( $ip_blacklist_nonce_value, $ip_blacklist_nonce_action, $ip_blacklist_nonce_name ) ) {
 					if ( rs_wpss_is_valid_ip( $ip_to_blacklist ) ) {
 						$last_admin_ip = get_option( 'spamshield_last_admin' );
@@ -7016,7 +7010,7 @@ if (!class_exists('WP_SpamShield')) {
 				/* Validate Request Values */
 				if ( !empty( $_REQUEST ) ) { $valid_req_spamshield_options = $_REQUEST;	} else { $valid_req_spamshield_options = array(); }
 				$wpss_options_default = unserialize( WPSS_OPTIONS_DEFAULT );
-				$wpss_options_general_boolean = array ( 'block_all_trackbacks', 'block_all_pingbacks', 'comment_logging', 'comment_logging_all', 'enhanced_comment_blacklist', 'enable_whitelist', 'allow_proxy_users', 'hide_extra_data', 'registration_shield_disable', 'registration_shield_level_1', 'disable_cf7_shield', 'disable_gf_shield', 'disable_misc_form_shield', 'disable_email_encode', 'allow_comment_author_keywords', 'promote_plugin_link' );
+				$wpss_options_general_boolean = array ( 'block_all_trackbacks', 'block_all_pingbacks', 'comment_logging', 'comment_logging_all', 'enhanced_comment_blacklist', 'enable_whitelist', 'allow_proxy_users', 'hide_extra_data', 'registration_shield_disable', 'registration_shield_level_1', 'disable_cf7_shield', 'disable_gf_shield', 'disable_misc_form_shield', 'disable_email_encode', 'allow_comment_author_keywords', 'enable_stopforumspam' );
 				$wpss_options_general_boolean_count = count( $wpss_options_general_boolean );
 				$i = 0;
 				while ( $i < $wpss_options_general_boolean_count ) {
@@ -7038,7 +7032,7 @@ if (!class_exists('WP_SpamShield')) {
 				else { $valid_req_spamshield_options['comment_min_length'] = $wpss_options_default['comment_min_length']; }
 
 				/* Update Values */
-				$option_list_go = array( 'block_all_trackbacks', 'block_all_pingbacks', 'comment_logging', 'comment_logging_all', 'enhanced_comment_blacklist', 'enable_whitelist', 'comment_min_length', 'allow_proxy_users', 'hide_extra_data', 'registration_shield_disable', 'registration_shield_level_1', 'disable_cf7_shield', 'disable_gf_shield', 'disable_misc_form_shield', 'disable_email_encode', 'allow_comment_author_keywords', 'promote_plugin_link' );
+				$option_list_go = array( 'block_all_trackbacks', 'block_all_pingbacks', 'comment_logging', 'comment_logging_all', 'enhanced_comment_blacklist', 'enable_whitelist', 'comment_min_length', 'allow_proxy_users', 'hide_extra_data', 'registration_shield_disable', 'registration_shield_level_1', 'disable_cf7_shield', 'disable_gf_shield', 'disable_misc_form_shield', 'disable_email_encode', 'allow_comment_author_keywords', 'enable_stopforumspam' );
 				foreach( $option_list_go as $i => $v ) { $spamshield_options[$v] = $valid_req_spamshield_options[$v]; }
 				$spamshield_options['comment_logging_start_date']		= $comment_logging_start_date;
 				$spamshield_options['install_date']						= $install_date;
@@ -7049,81 +7043,7 @@ if (!class_exists('WP_SpamShield')) {
 				$whitelist_keys_update = trim( stripslashes( $_REQUEST['wpss_whitelist'] ) );
 				rs_wpss_update_bw_list_keys( 'white', $whitelist_keys_update );
 				}
-			if ( !empty( $_REQUEST['submitted_wpss_contact_options'] ) && rs_wpss_is_user_admin() && check_admin_referer('wpss_update_contact_options_token','uco_tkn') ) {
-				/* Update User Admin Status */
-				$this->update_admin_status();
-				/* Check if initial user approval process was run on activation */
-				$wpss_init_user_approve_run = get_option( 'spamshield_init_user_approve_run' );
-				if ( empty( $wpss_init_user_approve_run ) ) { $this->approve_previous_users(); }
-				/* Validate Request Values */
-				if ( !empty( $_REQUEST ) ) { $valid_req_spamshield_options = $_REQUEST;	} else { $valid_req_spamshield_options = array(); }
-				$wpss_options_default = unserialize( WPSS_OPTIONS_DEFAULT );
-				$wpss_options_contact_boolean = array ( 'form_include_website', 'form_require_website', 'form_include_phone', 'form_require_phone', 'form_include_company', 'form_require_company', 'form_include_drop_down_menu', 'form_require_drop_down_menu', 'form_include_user_meta' );
-				$wpss_options_contact_boolean_count = count( $wpss_options_contact_boolean );
-				$i = 0;
-				while ( $i < $wpss_options_contact_boolean_count ) {
-					if ( !empty( $_REQUEST[$wpss_options_contact_boolean[$i]] ) && ( $_REQUEST[$wpss_options_contact_boolean[$i]] === 'on' || $_REQUEST[$wpss_options_contact_boolean[$i]] == 1 || $_REQUEST[$wpss_options_contact_boolean[$i]] == '1' ) ) { $valid_req_spamshield_options[$wpss_options_contact_boolean[$i]] = 1; }
-					else { $valid_req_spamshield_options[$wpss_options_contact_boolean[$i]] = 0; }
-					++$i;
-					}
-				$wpss_options_contact_text = array ( 'form_drop_down_menu_title', 'form_drop_down_menu_item_1', 'form_drop_down_menu_item_2', 'form_drop_down_menu_item_3', 'form_drop_down_menu_item_4', 'form_drop_down_menu_item_5', 'form_drop_down_menu_item_6', 'form_drop_down_menu_item_7', 'form_drop_down_menu_item_8', 'form_drop_down_menu_item_9', 'form_drop_down_menu_item_10', 'form_response_thank_you_message' );
-				$wpss_options_contact_text_count = count( $wpss_options_contact_text );
-				$i = 0;
-				while ( $i < $wpss_options_contact_text_count ) {
-					if ( !empty( $_REQUEST[$wpss_options_contact_text[$i]] ) ) { $valid_req_spamshield_options[$wpss_options_contact_text[$i]] = trim( stripslashes( $_REQUEST[$wpss_options_contact_text[$i]] ) ); }
-					else { $valid_req_spamshield_options[$wpss_options_contact_text[$i]] = $wpss_options_default[$wpss_options_contact_text[$i]]; }
-					++$i;
-					}
-				if ( !empty( $_REQUEST['form_message_width'] ) ) {
-					$form_message_width_temp = trim( stripslashes( $_REQUEST['form_message_width'] ) );
-					if ( $form_message_width_temp < 40 ) { $form_message_width_temp = 40; }
-					$valid_req_spamshield_options['form_message_width']	= $form_message_width_temp;
-					}
-				else { $valid_req_spamshield_options['form_message_width'] = $wpss_options_default['form_message_width']; }
-				if ( !empty( $_REQUEST['form_message_height'] ) ) {
-					$form_message_height_temp = trim( stripslashes( $_REQUEST['form_message_height'] ) );
-					if ( $form_message_height_temp < 5 ) { $form_message_height_temp = 5; }
-					$valid_req_spamshield_options['form_message_height'] = $form_message_height_temp;
-					}
-				else { $valid_req_spamshield_options['form_message_height'] = $wpss_options_default['form_message_height']; }
-				if ( !empty( $_REQUEST['form_message_min_length'] ) ) {
-					$form_message_min_length_temp = trim( stripslashes( $_REQUEST['form_message_min_length'] ) );
-					if ( $form_message_min_length_temp < 15 ) {	$form_message_min_length_temp = 15;	} elseif ( $form_message_min_length_temp > 150 ) { $form_message_min_length_temp = 150; }
-					$valid_req_spamshield_options['form_message_min_length'] = $form_message_min_length_temp;
-					}
-				else { $valid_req_spamshield_options['form_message_min_length'] = $wpss_options_default['form_message_min_length']; }
-				if ( !empty( $_REQUEST['form_message_recipient'] ) ) {
-					$form_message_recipient_temp = trim( stripslashes( $_REQUEST['form_message_recipient'] ) );
-					if ( is_email( $form_message_recipient_temp ) ) { $valid_req_spamshield_options['form_message_recipient'] = $form_message_recipient_temp; }
-					else { $valid_req_spamshield_options['form_message_recipient'] = $wpss_admin_email; }
-					}
-				else { $valid_req_spamshield_options['form_message_recipient'] = $wpss_admin_email; }
-				$option_list_co = array( 'form_include_website', 'form_require_website', 'form_include_phone', 'form_require_phone', 'form_include_company', 'form_require_company', 'form_include_drop_down_menu', 'form_require_drop_down_menu', 'form_drop_down_menu_title', 'form_drop_down_menu_item_1', 'form_drop_down_menu_item_2', 'form_drop_down_menu_item_3', 'form_drop_down_menu_item_4', 'form_drop_down_menu_item_5', 'form_drop_down_menu_item_6', 'form_drop_down_menu_item_7', 'form_drop_down_menu_item_8', 'form_drop_down_menu_item_9', 'form_drop_down_menu_item_10', 'form_message_width', 'form_message_height', 'form_message_min_length', 'form_message_recipient', 'form_response_thank_you_message', 'form_include_user_meta' );
-				foreach( $option_list_co as $i => $v ) { $spamshield_options[$v] = $valid_req_spamshield_options[$v]; }
-				/***
-				* Validate Include/Require Options
-				* Dummy-proofing the contact form settings so that you can't require a field without including it first.
-				* Added 1.9.5.3
-				***/		
-				$option_list_co_ir = array( 'website', 'phone', 'company', 'drop_down_menu', );
-				foreach( $option_list_co_ir as $i => $v ) {
-					$req = 'form_require_';
-					$inc = 'form_include_';
-					$i_old = $spamshield_options_prev[$inc.$v];
-					$i_new = $spamshield_options[$inc.$v];
-					$r_old = $spamshield_options_prev[$req.$v];
-					$r_new = $spamshield_options[$req.$v];
-					if ( !empty( $r_new ) && empty( $i_new ) && empty( $i_old ) && empty( $r_old ) ) { $spamshield_options[$inc.$v] = 1; }
-					elseif ( empty( $i_new ) && !empty( $r_new ) && !empty( $i_old ) && !empty( $r_old ) ) { $spamshield_options[$req.$v] = 0; }
-					}
-				$spamshield_options['install_date'] = $install_date;
-				if ( !empty( $spamshield_options['comment_logging_all'] ) ) { $spamshield_options['comment_logging'] = 1; }
-				if ( empty( $spamshield_options['comment_logging'] ) ) { $spamshield_options['comment_logging_all'] = 0; }
-				update_option( 'spamshield_options', $spamshield_options );
-				rs_wpss_update_session_data($spamshield_options);
-				$ip = rs_wpss_get_ip_addr();
-				if ( !empty( $ip ) ) { update_option( 'spamshield_last_admin', $ip ); }
-				}
+
 			if ( !rs_wpss_is_lang_en_us() ) { $wpss_info_box_height = '335'; } else { $wpss_info_box_height = '315'; }
 
 			$wordpress_comment_blacklist	= rs_wpss_get_bw_list_keys( 'black' );
@@ -7131,45 +7051,8 @@ if (!class_exists('WP_SpamShield')) {
 
 			?>
 
-			<div style="width:375px;height:<?php echo $wpss_info_box_height; ?>px;border-style:solid;border-width:1px;border-color:#003366;background-color:#DDEEFF;padding:0px 15px 0px 15px;margin-top:<?php echo $wpss_vert_margins; ?>px;margin-right:<?php echo $wpss_horz_margins; ?>px;float:left;clear:left;">
-			<p><a name="wpss_top"><h3><?php _e( 'Quick Navigation - Contents', WPSS_PLUGIN_NAME ); ?></h3></a></p>
-			<ol style="list-style-type:decimal;padding-left:30px;">
-				<li><a href="#wpss_general_options"><?php _e( 'General Settings', WPSS_PLUGIN_NAME ); ?></a></li>
-				<li><a href="#wpss_contact_form_options"><?php _e( 'Contact Form Settings', WPSS_PLUGIN_NAME ); ?></a></li>
-				<li><a href="<?php echo WPSS_HOME_URL; ?>#wpss_installation_instructions" target="_blank" rel="external" ><?php _e( 'Installation Instructions', WPSS_PLUGIN_NAME ); ?></a></li>
-				<li><a href="<?php echo WPSS_HOME_URL; ?>#wpss_displaying_stats" target="_blank" rel="external" ><?php _e( 'Displaying Spam Stats on Your Blog', WPSS_PLUGIN_NAME ); ?></a></li>
-				<li><a href="<?php echo WPSS_HOME_URL; ?>#wpss_adding_contact_form" target="_blank" rel="external" ><?php _e( 'Adding a Contact Form to Your Blog', WPSS_PLUGIN_NAME ); ?></a></li>
-				<li><a href="<?php echo WPSS_HOME_URL; ?>#wpss_configuration" target="_blank" rel="external" ><?php _e( 'Configuration Information', WPSS_PLUGIN_NAME ); ?></a></li>
-				<li><a href="<?php echo WPSS_HOME_URL; ?>#wpss_known_conflicts" target="_blank" rel="external" ><?php _e( 'Known Plugin Conflicts', WPSS_PLUGIN_NAME ); ?></a></li>
-				<li><a href="<?php echo WPSS_HOME_URL; ?>#wpss_troubleshooting" target="_blank" rel="external" ><?php _e( 'Troubleshooting Guide / Support', WPSS_PLUGIN_NAME ); ?></a></li>
-				<li><a href="#wpss_let_others_know"><?php _e( 'Let Others Know About WP-SpamShield', WPSS_PLUGIN_NAME ); ?></a></li>
-				<li><a href="#wpss_download_plugin_documentation"><?php echo rs_wpss_doc_txt(); ?></a></li>
-			</ol>
-			</div>
-			<div style="width:375px;height:<?php echo $wpss_info_box_height; ?>px;border-style:solid;border-width:1px;border-color:#003366;background-color:#DDEEFF;padding:0px 15px 0px 15px;margin-top:<?php echo $wpss_vert_margins; ?>px;margin-right:<?php echo $wpss_horz_margins; ?>px;float:left;">
-			<p>
-			<?php if ( $spam_count_raw > 100 ) { ?>
-			<a name="wpss_rate"><h3><?php _e( 'Happy with WP-SpamShield?', WPSS_PLUGIN_NAME ); ?></h3></a></p>
-			<p><img src='<?php echo WPSS_PLUGIN_IMG_URL; ?>/5-stars-rating.png' alt='' width='99' height='19' align='right' style='border-style:none;padding:3px 0 20px 20px;float:right;' /><a href="<?php echo WPSS_WP_RATING_URL; ?>" target="_blank" rel="external" ><?php _e( 'Let others know by giving it a good rating on WordPress.org!', WPSS_PLUGIN_NAME ); ?></a><br /><br />
-			<?php } ?>
-
-			<strong><?php echo rs_wpss_doc_txt(); ?>:</strong> <a href="<?php echo WPSS_HOME_URL; ?>" target="_blank" rel="external" ><?php _e( 'Plugin Homepage', WPSS_PLUGIN_NAME ); ?></a><br />
-			<strong><?php _e( 'Tech Support', WPSS_PLUGIN_NAME ); ?>:</strong> <a href="<?php echo WPSS_SUPPORT_URL; ?>" target="_blank" rel="external" ><?php _e( 'WP-SpamShield Support', WPSS_PLUGIN_NAME ); ?></a><br />
-			<strong><?php _e( 'Follow on Twitter', WPSS_PLUGIN_NAME ); ?>:</strong> <a href="http://twitter.com/WPSpamShield" target="_blank" rel="external" >@WPSpamShield</a><br />
-			<strong><?php _e( 'Let Others Know', WPSS_PLUGIN_NAME ); ?>:</strong> <a href="http://www.redsandmarketing.com/blog/wp-spamshield-wordpress-plugin-released/#comments" target="_blank" rel="external" ><?php _e( 'Leave a Comment' ); ?></a><br />
-            <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank" style="margin-top:10px;">
-            <input type="hidden" name="cmd" value="_s-xclick">
-            <input type="hidden" name="hosted_button_id" value="DFMTNHJEPFFUL">
-            <input type="image" src="<?php echo WPSS_PLUGIN_IMG_URL; ?>/btn-donate-sm.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!" />
-            <img alt="" border="0" src="<?php echo WPSS_PLUGIN_IMG_URL; ?>/spacer.gif" width="1" height="1" />
-            </form>
-			</p>
-			<?php 
-			echo '<p><strong><a href="'.WPSS_DONATE_URL.'" title="' . __( 'WP-SpamShield is provided for free.', WPSS_PLUGIN_NAME ) . ' ' . __( 'If you like the plugin, consider a donation to help further its development.', WPSS_PLUGIN_NAME ) . '" target="_blank" rel="external" >' . __( 'Donate to WP-SpamShield', WPSS_PLUGIN_NAME ) . '</a></strong></p>';
-			?>
-			</div>
 			<div style='width:797px;border-style:solid;border-width:1px;border-color:#333333;background-color:#FEFEFE;padding:0px 15px 0px 15px;margin-top:<?php echo $wpss_vert_margins; ?>px;margin-right:<?php echo $wpss_horz_margins; ?>px;float:left;clear:left;'>
-			<p><a name="wpss_general_options"><h3><?php _e( 'General Settings', WPSS_PLUGIN_NAME ); ?></h3></a></p>
+			<p><a name="wpss_general_options"><h3><?php _e( 'Impostazioni Generali', WPSS_PLUGIN_NAME ); ?></h3></a></p>
 			<form name="wpss_general_options" method="post">
 			<input type="hidden" name="submitted_wpss_general_options" value="1" />
             <?php
@@ -7183,71 +7066,71 @@ if (!class_exists('WP_SpamShield')) {
 					<li>
 					<label for="comment_logging">
 						<input type="checkbox" id="comment_logging" name="comment_logging" <?php echo ($spamshield_options['comment_logging']==TRUE?"checked=\"checked\"":"") ?> value="1" />
-						<strong><?php echo __( 'Blocked Comment Logging Mode', WPSS_PLUGIN_NAME );
-						if ( rs_wpss_is_lang_en_us() ) { echo ' &mdash; ' . __( 'See what spam has been blocked!', WPSS_PLUGIN_NAME ); /* TO DO: TRANSLATE */ }
-						?></strong><br /><?php _e( 'Temporary diagnostic mode that logs blocked comment submissions for 7 days, then turns off automatically.', WPSS_PLUGIN_NAME ); ?><br /><?php _e( 'Log is cleared each time this feature is turned on.', WPSS_PLUGIN_NAME ); ?>
+						<strong><?php echo __( 'Modalità Registrazione Commenti Bloccati', WPSS_PLUGIN_NAME );
+						if ( rs_wpss_is_lang_en_us() ) { echo ' &mdash; ' . __( 'Vedi quale spam è stato bloccato!', WPSS_PLUGIN_NAME ); /* TO DO: TRANSLATE */ }
+						?></strong><br /><?php _e( 'Modalità diagnostica temporanea che registra i tentativi di commento bloccati per 7 giorni, per poi disattivarsi automaticamente.', WPSS_PLUGIN_NAME ); ?><br /><?php _e( 'Il log viene cancellato ogni volta che questa funzione viene attivata.', WPSS_PLUGIN_NAME ); ?>
 					</label>
 					<?php
 					if ( !empty( $spamshield_options['comment_logging'] ) ) {
 						/* If comment logging is on, check file permissions and attempt to fix. Reset .htaccess file for data dir, to allow IP of current admin to view log file. Let user know if not set correctly. */
 						$wpss_hta_reset = rs_wpss_log_reset( NULL, TRUE, TRUE );
 						if ( empty( $wpss_hta_reset ) ) {
-							echo '<br />'.WPSS_EOL.'<span style="color:red;"><strong>' . sprintf( __( 'The log file may not be writeable. You may need to manually correct the file permissions.<br />Set the permission for the "%1$s" directory to "%2$s" and all files within it to "%3$s".</strong><br />If that doesn\'t work, then please read the <a href="%4$s" %5$s>FAQ</a> for this topic.', WPSS_PLUGIN_NAME ), WPSS_PLUGIN_DATA_PATH, '0755', '0644', WPSS_HOME_URL.'#wpss_faqs_5', 'target="_blank"' ) . '</span><br />'.WPSS_EOL;
+							echo '<br />'.WPSS_EOL.'<span style="color:red;"><strong>' . sprintf( __( 'Il file di log potrebbe non essere scrivibile. Potresti dover correggere manualmente i permessi dei file.<br />Imposta il permesso per la directory "%1$s" a "%2$s" e tutti i file all\'interno a "%3$s".</strong><br />Se non funziona, leggi le <a href="%4$s" %5$s>FAQ</a> per questo argomento.', WPSS_PLUGIN_NAME ), WPSS_PLUGIN_DATA_PATH, '0755', '0644', WPSS_HOME_URL.'#wpss_faqs_5', 'target="_blank"' ) . '</span><br />'.WPSS_EOL;
 							}
 						}
 					else { rs_wpss_log_reset( NULL, FALSE, FALSE, TRUE ); /* Create log file if it doesn't exist */ }
 					$wpss_log_key = rs_wpss_get_log_key();
 					$wpss_log_filename = strpos( WPSS_SERVER_NAME_REV, RSMP_MDBUG_SERVER_NAME_REV ) === 0 ? 'temp-comments-log.txt' : 'temp-comments-log-'.$wpss_log_key.'.txt';
 					?>
-					<br /><strong><a href="<?php echo WPSS_PLUGIN_DATA_URL.'/'.$wpss_log_filename; ?>" target="_blank"><?php _e( 'Download Comment Log File', WPSS_PLUGIN_NAME ); ?></a> - <?php _e( 'Right-click, and select "Save Link As"', WPSS_PLUGIN_NAME ); ?></strong><br />&nbsp;
+					<br /><strong><a href="<?php echo WPSS_PLUGIN_DATA_URL.'/'.$wpss_log_filename; ?>" target="_blank"><?php _e( 'Scarica File Log Commenti', WPSS_PLUGIN_NAME ); ?></a> - <?php _e( 'Fai clic destro e seleziona "Salva link con nome"', WPSS_PLUGIN_NAME ); ?></strong><br />&nbsp;
 					</li>
 					<li>
 					<label for="comment_logging_all">
 						<input type="checkbox" id="comment_logging_all" name="comment_logging_all" <?php echo ($spamshield_options['comment_logging_all']==TRUE?"checked=\"checked\"":"") ?> value="1" />
-						<strong><?php _e( 'Log All Comments', WPSS_PLUGIN_NAME ); ?></strong><br /><?php _e( 'Requires that Blocked Comment Logging Mode be engaged. Instead of only logging blocked comments, this will allow the log to capture all comments while logging mode is turned on. This provides more technical data for comment submissions than WordPress provides, and helps us improve the plugin.<br />If you plan on submitting spam samples to us for analysis, it\'s helpful for you to turn this on, otherwise it\'s not necessary.', WPSS_PLUGIN_NAME ); ?></label>
-					<br /><a href="<?php echo WPSS_HOME_URL; ?>#wpss_configuration_log_all_comments" target="_blank" rel="external" ><?php _e( 'For more about this, see the documentation.', WPSS_PLUGIN_NAME ); ?></a><br />&nbsp;
+						<strong><?php _e( 'Registra Tutti i Commenti', WPSS_PLUGIN_NAME ); ?></strong><br /><?php _e( 'Richiede che la Modalità Registrazione Commenti Bloccati sia attiva. Invece di registrare solo i commenti bloccati, questo consentirà al log di catturare tutti i commenti mentre la modalità di registrazione è attivata. Questo fornisce più dati tecnici per gli invii di commenti rispetto a quanto fornisce WordPress, e ci aiuta a migliorare il plugin.<br />Se prevedi di inviare campioni di spam per la nostra analisi, è utile attivare questa opzione, altrimenti non è necessario.', WPSS_PLUGIN_NAME ); ?></label>
+					<br /><a href="<?php echo WPSS_HOME_URL; ?>#wpss_configuration_log_all_comments" target="_blank" rel="external" ><?php _e( 'Per maggiori informazioni, consulta la documentazione.', WPSS_PLUGIN_NAME ); ?></a><br />&nbsp;
 					</li>
 					<li>
 					<label for="enhanced_comment_blacklist">
 						<input type="checkbox" id="enhanced_comment_blacklist" name="enhanced_comment_blacklist" <?php echo ($spamshield_options['enhanced_comment_blacklist']==TRUE?"checked=\"checked\"":"") ?> value="1" />
-						<strong><?php _e( 'Enhanced Comment Blacklist', WPSS_PLUGIN_NAME ); ?></strong><br /><?php _e( 'Enhances WordPress\'s Comment Blacklist - instead of just sending comments to moderation, they will be completely blocked. Also adds a link in the comment notification emails that will let you blacklist a commenter\'s IP with one click.<br />(Useful if you receive repetitive human spam or harassing comments from a particular commenter.)', WPSS_PLUGIN_NAME ); ?></label>
-					<br /><a href="<?php echo WPSS_HOME_URL; ?>#wpss_configuration_enhanced_comment_blacklist" target="_blank" rel="external" ><?php _e( 'For more about this, see the documentation.', WPSS_PLUGIN_NAME ); ?></a><br />&nbsp;
+						<strong><?php _e( 'Blacklist Commenti Avanzata', WPSS_PLUGIN_NAME ); ?></strong><br /><?php _e( 'Migliora la Blacklist dei Commenti di WordPress - invece di inviare i commenti in moderazione, verranno completamente bloccati. Aggiunge anche un link nelle email di notifica dei commenti che ti consentirà di inserire in blacklist l\'IP di un commentatore con un solo clic.<br />(Utile se ricevi spam umano ripetitivo o commenti fastidiosi da un commentatore in particolare.)', WPSS_PLUGIN_NAME ); ?></label>
+					<br /><a href="<?php echo WPSS_HOME_URL; ?>#wpss_configuration_enhanced_comment_blacklist" target="_blank" rel="external" ><?php _e( 'Per maggiori informazioni, consulta la documentazione.', WPSS_PLUGIN_NAME ); ?></a><br />&nbsp;
 					</li>
 					<label for="wordpress_comment_blacklist">
-						<strong><?php _e( 'Your current WordPress Comment Blacklist', WPSS_PLUGIN_NAME ); ?></strong><br /><?php _e( 'When a comment contains any of these words in its content, name, URL, e-mail, or IP, it will be completely blocked, not just marked as spam. One word or IP per line. It is not case-sensitive and will match included words, so "press" on your blacklist will block "WordPress" in a comment.', WPSS_PLUGIN_NAME ); ?><br />
+						<strong><?php _e( 'La tua attuale Blacklist dei Commenti di WordPress', WPSS_PLUGIN_NAME ); ?></strong><br /><?php _e( 'Quando un commento contiene una di queste parole nel contenuto, nel nome, nell\'URL, nell\'e-mail o nell\'IP, verrà completamente bloccato, non solo contrassegnato come spam. Una parola o IP per riga. Non fa distinzione tra maiuscole e minuscole e corrisponderà alle parole incluse, quindi "press" nella tua blacklist bloccherà "WordPress" in un commento.', WPSS_PLUGIN_NAME ); ?><br />
 						<textarea id="wordpress_comment_blacklist" name="wordpress_comment_blacklist" cols="80" rows="8" /><?php echo $wordpress_comment_blacklist; ?></textarea><br />
 					</label>
-					<?php _e( 'You can update this list here.', WPSS_PLUGIN_NAME ); ?> <a href="<?php echo RSMP_ADMIN_URL; ?>/options-discussion.php"><?php _e( 'You can also update it on the WordPress Discussion Settings page.', WPSS_PLUGIN_NAME ); ?></a><br />&nbsp;
+					<?php _e( 'Puoi aggiornare questa lista qui.', WPSS_PLUGIN_NAME ); ?> <a href="<?php echo RSMP_ADMIN_URL; ?>/options-discussion.php"><?php _e( 'Puoi anche aggiornarla nella pagina Impostazioni Discussione di WordPress.', WPSS_PLUGIN_NAME ); ?></a><br />&nbsp;
 					<li>
 					<label for="enable_whitelist">
 						<input type="checkbox" id="enable_whitelist" name="enable_whitelist" <?php echo ($spamshield_options['enable_whitelist']==TRUE?"checked=\"checked\"":"") ?> value="1" />
-						<strong><?php _e( 'Enable WP-SpamShield Whitelist', WPSS_PLUGIN_NAME ); ?></strong><br /><?php _e( 'Enables WP-SpamShield\'s Whitelist - for comments and contact form submissions. When a comment or contact form is submitted from an e-mail address on the whitelist, it will bypass spam filters and be allowed through.<br />(Useful if you have specific users that you want to let bypass the filters.)', WPSS_PLUGIN_NAME ); ?></label>
-					<br /><a href="<?php echo WPSS_HOME_URL; ?>#wpss_configuration_enable_whitelist" target="_blank" rel="external" ><?php _e( 'For more about this, see the documentation.', WPSS_PLUGIN_NAME ); ?></a><br />&nbsp;
+						<strong><?php _e( 'Abilita la Whitelist di WP-SpamShield', WPSS_PLUGIN_NAME ); ?></strong><br /><?php _e( 'Abilita la Whitelist di WP-SpamShield - per commenti e invii tramite moduli di contatto. Quando un commento o un modulo di contatto viene inviato da un indirizzo e-mail presente nella whitelist, aggirerà i filtri antispam e sarà consentito.<br />(Utile se hai utenti specifici a cui vuoi permettere di ignorare i filtri.)', WPSS_PLUGIN_NAME ); ?></label>
+					<br /><a href="<?php echo WPSS_HOME_URL; ?>#wpss_configuration_enable_whitelist" target="_blank" rel="external" ><?php _e( 'Per maggiori informazioni, consulta la documentazione.', WPSS_PLUGIN_NAME ); ?></a><br />&nbsp;
 					</li>
 					<label for="wpss_whitelist">
-						<strong><?php _e( 'Your current WP-SpamShield Whitelist', WPSS_PLUGIN_NAME ); ?></strong><br /><?php _e( 'One email address per line. Each entry must be a valid and complete email address, like <em>user@yourwebsite.com</em>. It is not case-sensitive and will only make exact matches, not partial matches.', WPSS_PLUGIN_NAME ); ?><br />
+						<strong><?php _e( 'La tua attuale Whitelist di WP-SpamShield', WPSS_PLUGIN_NAME ); ?></strong><br /><?php _e( 'Un indirizzo email per riga. Ogni voce deve essere un indirizzo email valido e completo, come <em>utente@iltuosito.com</em>. Non fa distinzione tra maiuscole e minuscole ed effettuerà solo corrispondenze esatte, non corrispondenze parziali.', WPSS_PLUGIN_NAME ); ?><br />
 						<textarea id="wpss_whitelist" name="wpss_whitelist" cols="80" rows="8" /><?php echo $wpss_whitelist; ?></textarea><br />&nbsp;
 					</label>
 					<li>
 					<label for="comment_min_length">
 						<?php $comment_min_length = trim(stripslashes($spamshield_options['comment_min_length'])); ?>
 						<input type="number" size="4" id="comment_min_length" name="comment_min_length" value="<?php if ( !empty( $comment_min_length ) && $comment_min_length >= 1 ) { echo $comment_min_length; } elseif ( empty( $form_message_width ) ) { echo '15'; } else { echo '1';} ?>" min="1" max="30" step="1" />
-						<strong><?php echo sprintf( __( 'Minimum comment length (# of characters). (Minimum %1$s, Default %2$s)', WPSS_PLUGIN_NAME ), '1', '15' ); ?></strong><br />&nbsp;
+						<strong><?php echo sprintf( __( 'Lunghezza minima del commento (numero di caratteri). (Minimo %1$s, Predefinito %2$s)', WPSS_PLUGIN_NAME ), '1', '15' ); ?></strong><br />&nbsp;
 					</label>
 					</li>
 <?php
 			$boolean_options_go = array(
-				array( 'block_all_trackbacks', __( 'Disable trackbacks.', WPSS_PLUGIN_NAME ), __( 'Use if trackback spam is excessive. (Not recommended)', WPSS_PLUGIN_NAME ) ),
-				array( 'block_all_pingbacks', __( 'Disable pingbacks.', WPSS_PLUGIN_NAME ), __( 'Use if pingback spam is excessive. Disadvantage is reduction of communication between blogs. (Not recommended)', WPSS_PLUGIN_NAME ) ),
-				array( 'allow_proxy_users', __( 'Allow users behind proxy servers to comment?', WPSS_PLUGIN_NAME ), __( 'Many human spammers hide behind proxies, so you can uncheck this option for extra protection. (For highest user compatibility, leave it checked.)', WPSS_PLUGIN_NAME ) ),
-				array( 'hide_extra_data', __( 'Hide extra technical data in comment notifications.', WPSS_PLUGIN_NAME ), __( 'This data is helpful if you need to submit a spam sample. If you dislike seeing the extra info, you can use this option.', WPSS_PLUGIN_NAME ) ),
-				array( 'registration_shield_disable', __( 'Disable Registration Spam Shield.', WPSS_PLUGIN_NAME ), __( 'This option will disable the anti-spam shield for the WordPress registration form only. While not recommended, this option is available if you need it. Anti-spam will still remain active for comments, pingbacks, trackbacks, and contact forms.', WPSS_PLUGIN_NAME ) ),
-				array( 'disable_cf7_shield', __( 'Disable anti-spam for Contact Form 7.', WPSS_PLUGIN_NAME ), __( 'This option will disable anti-spam protection for Contact Form 7 forms.', WPSS_PLUGIN_NAME ) ),
-				array( 'disable_gf_shield', __( 'Disable anti-spam for Gravity Forms.', WPSS_PLUGIN_NAME ), __( 'This option will disable anti-spam protection for Gravity Forms.', WPSS_PLUGIN_NAME ) ),
-				array( 'disable_misc_form_shield', __( 'Disable anti-spam for miscellaneous forms.', WPSS_PLUGIN_NAME ), __( 'This option will disable anti-spam protection for custom and miscellaneous forms on your site. (All forms that are not from WP-SpamShield, Contact Form 7, or Gravity Forms.)', WPSS_PLUGIN_NAME ) ),
-				array( 'disable_email_encode', __( 'Disable email harvester protection.', WPSS_PLUGIN_NAME ), __( 'This option will disable the automatic encoding of email addresses and mailto links in your website content.', WPSS_PLUGIN_NAME ) ),
-				array( 'allow_comment_author_keywords', __( 'Allow Keywords in Comment Author Names.', WPSS_PLUGIN_NAME ), sprintf( __( 'This will allow some keywords to be used in comment author names. By default, WP-SpamShield blocks many common spam keywords from being used in the comment "%1$s" field. This option is useful for sites with users that use pseudonyms, or for sites that simply want to allow business names and keywords to be used in the comment "%2$s" field. This option is not recommended, as it can potentially allow more human spam, but it is available if you choose. Your site will still be protected against all automated comment spam.', WPSS_PLUGIN_NAME ), __( 'Name' ), __( 'Name' ) ) ),
-				array( 'promote_plugin_link', __( 'Help promote WP-SpamShield?', WPSS_PLUGIN_NAME ), __( 'This places a small link under the comments and contact form, letting others know what\'s blocking spam on your blog.', WPSS_PLUGIN_NAME ) ),
+				array( 'block_all_trackbacks', __( 'Disabilita trackback.', WPSS_PLUGIN_NAME ), __( 'Usa se lo spam dai trackback è eccessivo. (Non consigliato)', WPSS_PLUGIN_NAME ) ),
+				array( 'block_all_pingbacks', __( 'Disabilita pingback.', WPSS_PLUGIN_NAME ), __( 'Usa se lo spam dai pingback è eccessivo. Lo svantaggio è la riduzione della comunicazione tra i blog. (Non consigliato)', WPSS_PLUGIN_NAME ) ),
+				array( 'allow_proxy_users', __( 'Consentire agli utenti dietro server proxy di commentare?', WPSS_PLUGIN_NAME ), __( 'Molti spammer umani si nascondono dietro ai proxy, quindi puoi deselezionare questa opzione per una protezione aggiuntiva. (Per la massima compatibilità con gli utenti, lasciala selezionata.)', WPSS_PLUGIN_NAME ) ),
+				array( 'hide_extra_data', __( 'Nascondi dati tecnici extra nelle notifiche dei commenti.', WPSS_PLUGIN_NAME ), __( 'Questi dati sono utili se devi inviare un campione di spam. Se non ti piace vedere le informazioni extra, puoi usare questa opzione.', WPSS_PLUGIN_NAME ) ),
+				array( 'registration_shield_disable', __( 'Disabilita Protezione Registrazione.', WPSS_PLUGIN_NAME ), __( 'Questa opzione disabiliterà lo scudo antispam solo per il modulo di registrazione di WordPress. Sebbene non consigliato, questa opzione è disponibile in caso di necessità. L\'antispam rimarrà attivo per commenti, pingback, trackback e moduli di contatto.', WPSS_PLUGIN_NAME ) ),
+				array( 'disable_cf7_shield', __( 'Disabilita antispam per Contact Form 7.', WPSS_PLUGIN_NAME ), __( 'Questa opzione disabiliterà la protezione antispam per i moduli di Contact Form 7.', WPSS_PLUGIN_NAME ) ),
+				array( 'disable_gf_shield', __( 'Disabilita antispam per Gravity Forms.', WPSS_PLUGIN_NAME ), __( 'Questa opzione disabiliterà la protezione antispam per Gravity Forms.', WPSS_PLUGIN_NAME ) ),
+				array( 'disable_misc_form_shield', __( 'Disabilita antispam per moduli vari.', WPSS_PLUGIN_NAME ), __( 'Questa opzione disabiliterà la protezione antispam per i moduli personalizzati e vari sul tuo sito. (Tutti i moduli che non provengono da WP-SpamShield, Contact Form 7 o Gravity Forms.)', WPSS_PLUGIN_NAME ) ),
+				array( 'disable_email_encode', __( 'Disabilita la protezione dai raccoglitori di email.', WPSS_PLUGIN_NAME ), __( 'Questa opzione disabiliterà la codifica automatica degli indirizzi email e dei link mailto nel contenuto del tuo sito web.', WPSS_PLUGIN_NAME ) ),
+				array( 'allow_comment_author_keywords', __( 'Consenti parole chiave nei nomi degli autori dei commenti.', WPSS_PLUGIN_NAME ), sprintf( __( 'Questo consentirà l\'uso di alcune parole chiave nei nomi degli autori dei commenti. Per impostazione predefinita, WP-SpamShield impedisce l\'uso di molte parole chiave di spam comuni nel campo "%1$s" del commento. Questa opzione è utile per i siti con utenti che usano pseudonimi o per i siti che desiderano semplicemente consentire nomi aziendali e parole chiave nel campo "%2$s" del commento. Questa opzione non è raccomandata, poiché potrebbe consentire più spam umano, ma è disponibile se lo desideri. Il tuo sito sarà comunque protetto contro tutto lo spam automatizzato nei commenti.', WPSS_PLUGIN_NAME ), __( 'Nome' ), __( 'Nome' ) ) ),
+				array( 'enable_stopforumspam', __( 'Abilita StopForumSpam API.', WPSS_PLUGIN_NAME ), __( 'Controlla l\'indirizzo IP e l\'email contro il database di StopForumSpam per bloccare noti spammer.', WPSS_PLUGIN_NAME ) ),
 				);
 			foreach( $boolean_options_go as $i => $v ) {
 				$checked = $spamshield_options[$v[0]]==TRUE ? 'checked="checked" ' : '';
@@ -7257,168 +7140,14 @@ if (!class_exists('WP_SpamShield')) {
 				</ul>
 			</fieldset>
 			<p class="submit">
-			<input type="submit" name="submit_wpss_general_options" value="<?php _e( 'Save Changes' ); ?>" class="button-primary" style="float:left;" />
+			<input type="submit" name="submit_wpss_general_options" value="<?php _e( 'Salva le modifiche' ); ?>" class="button-primary" style="float:left;" />
 			</p>
 			</form>
 			<p>&nbsp;</p>
-			<p><div style="float:right;font-size:12px;">[ <a href="#wpss_top"><?php _e( 'BACK TO TOP', WPSS_PLUGIN_NAME ); ?></a> ]</div></p>
-			<p>&nbsp;</p>
-			</div>
-			<div style='width:797px;border-style:solid;border-width:1px;border-color:#003366;background-color:#DDEEFF;padding:0px 15px 0px 15px;margin-top:<?php echo $wpss_vert_margins; ?>px;margin-right:<?php echo $wpss_horz_margins; ?>px;float:left;clear:left;'>
-			<p><a name="wpss_contact_form_options"><h3><?php _e( 'Contact Form Settings', WPSS_PLUGIN_NAME ); ?></h3></a></p>
-			<form name="wpss_contact_options" method="post">
-			<input type="hidden" name="submitted_wpss_contact_options" value="1" />
-            <?php
-			wp_nonce_field('wpss_update_contact_options_token','uco_tkn');
-			?>
-
-			<fieldset class="options">
-				<ul style="list-style-type:none;padding-left:30px;">
-<?php
-			$boolean_options_co = array(
-				array( 'form_include_website', __( 'Include "Website" field.', WPSS_PLUGIN_NAME ) ),
-				array( 'form_require_website', __( 'Require "Website" field.', WPSS_PLUGIN_NAME ) ),
-				array( 'form_include_phone', __( 'Include "Phone" field.', WPSS_PLUGIN_NAME ) ),
-				array( 'form_require_phone', __( 'Require "Phone" field.', WPSS_PLUGIN_NAME ) ),
-				array( 'form_include_company', __( 'Include "Company" field.', WPSS_PLUGIN_NAME ) ),
-				array( 'form_require_company', __( 'Require "Company" field.', WPSS_PLUGIN_NAME ) ),
-				array( 'form_include_drop_down_menu', __( 'Include drop-down menu select field.', WPSS_PLUGIN_NAME ) ),
-				array( 'form_require_drop_down_menu', __( 'Require drop-down menu select field.', WPSS_PLUGIN_NAME ) ),
-				);
-			foreach( $boolean_options_co as $i => $v ) {
-				$checked = TRUE == $spamshield_options[$v[0]] ? 'checked="checked" ' : '';
-				echo "\t\t\t\t\t".'<li>'.WPSS_EOL."\t\t\t\t\t".'<label for="'.$v[0].'">'.WPSS_EOL."\t\t\t\t\t\t".'<input type="checkbox" id="'.$v[0].'" name="'.$v[0].'" '.$checked.'value="1" />'.WPSS_EOL."\t\t\t\t\t\t".'<strong>'.$v[1].'</strong><br />&nbsp;'.WPSS_EOL."\t\t\t\t\t".'</label>'.WPSS_EOL."\t\t\t\t\t".'</li>'.WPSS_EOL;
-				}
-			$text_options_co = array(
-				array( 'form_drop_down_menu_title', 'Title of drop-down select menu. (Menu won\'t be shown if empty.)' ),
-				array( 'form_drop_down_menu_item_1', 'Drop-down select menu item 1. (Menu won\'t be shown if empty.)' ),
-				array( 'form_drop_down_menu_item_1', 'Drop-down select menu item 1. (Leave blank if not using.)' ),
-				);
-			$i = 0;
-			while ( $i <= 10 ) {
-				$k = $i == 0 ? 0 : 1; $k = $i >= 3 ? 2 : $k; $v = $text_options_co[$k];
-				$v[0] = str_replace( '1', $i, $v[0] ); $v[1] = __( str_replace( '1', $i, $v[1] ), WPSS_PLUGIN_NAME );
-				$value = trim( stripslashes( $spamshield_options[$v[0]] ) );
-				if ( empty( $value ) ) { $value = ''; }
-				echo "\t\t\t\t\t".'<li>'.WPSS_EOL."\t\t\t\t\t".'<label for="'.$v[0].'">'.WPSS_EOL."\t\t\t\t\t\t".'<input type="text" size="40" id="'.$v[0].'" name="'.$v[0].'" value="'.$value.'" />'.WPSS_EOL."\t\t\t\t\t\t".'<strong>'.$v[1].'</strong><br />&nbsp;'.WPSS_EOL."\t\t\t\t\t".'</label>'.WPSS_EOL."\t\t\t\t\t".'</li>'.WPSS_EOL;
-				++$i;
-				}
-?>
-					<li>
-					<label for="form_message_width">
-						<?php $form_message_width = trim(stripslashes($spamshield_options['form_message_width'])); ?>
-						<input type="number" size="4" id="form_message_width" name="form_message_width" value="<?php if ( !empty( $form_message_width ) && $form_message_width >= 40 ) { echo $form_message_width; } else { echo '40';} ?>" min="40" max="400" step="1" />
-						<strong><?php echo sprintf( __( '"Message" field width. (Minimum %s)', WPSS_PLUGIN_NAME ), '40' ); ?></strong><br />&nbsp;
-					</label>
-					</li>
-					<li>
-					<label for="form_message_height">
-						<?php $form_message_height = trim(stripslashes($spamshield_options['form_message_height'])); ?>
-						<input type="number" size="4" id="form_message_height" name="form_message_height" value="<?php if ( !empty( $form_message_height ) && $form_message_height >= 5 ) { echo $form_message_height; } elseif ( empty( $form_message_height ) ) { echo '10'; } else { echo '5';} ?>" min="5" max="100" step="1" />
-						<strong><?php echo sprintf( __( '"Message" field height. (Minimum %1$s, Default %2$s)', WPSS_PLUGIN_NAME ), '5', '10' ); ?></strong><br />&nbsp;
-					</label>
-					</li>
-					<li>
-					<label for="form_message_min_length">
-						<?php $form_message_min_length = trim(stripslashes($spamshield_options['form_message_min_length'])); ?>
-						<input type="number" size="4" id="form_message_min_length" name="form_message_min_length" value="<?php if ( !empty( $form_message_min_length ) && $form_message_min_length >= 15 ) { echo $form_message_min_length; } elseif ( empty( $form_message_width ) ) { echo '25'; } else { echo '15';} ?>" min="15" max="150" step="1" />
-						<strong><?php echo sprintf( __( 'Minimum message length (# of characters). (Minimum %1$s, Default %2$s)', WPSS_PLUGIN_NAME ), '15', '25' ); ?></strong><br />&nbsp;
-					</label>
-					</li>
-					<li>
-					<label for="form_message_recipient">
-						<?php $form_message_recipient = trim(stripslashes($spamshield_options['form_message_recipient'])); ?>
-						<input type="email" size="40" id="form_message_recipient" name="form_message_recipient" value="<?php if ( empty( $form_message_recipient ) ) { echo $wpss_admin_email; } else { echo $form_message_recipient; } ?>" />
-						<strong><?php _e( 'Optional: Enter alternate form recipient. Default is blog admin email.', WPSS_PLUGIN_NAME ); ?></strong><br />&nbsp;
-					</label>
-					</li>
-					<li>
-					<label for="form_response_thank_you_message">
-						<?php 
-						$form_response_thank_you_message = trim(stripslashes($spamshield_options['form_response_thank_you_message']));
-						?>
-						<?php _e( '<strong>Enter message to be displayed upon successful contact form submission.</strong><br />Can be plain text, HTML, or an ad, etc.', WPSS_PLUGIN_NAME ); ?><br />
-						<textarea id="form_response_thank_you_message" name="form_response_thank_you_message" cols="80" rows="3" /><?php if ( empty( $form_response_thank_you_message ) ) { _e( 'Your message was sent successfully. Thank you.', WPSS_PLUGIN_NAME ); } else { echo $form_response_thank_you_message; } ?></textarea><br />&nbsp;
-					</label>
-					</li>
-					<li>
-					<label for="form_include_user_meta">
-						<input type="checkbox" id="form_include_user_meta" name="form_include_user_meta" <?php echo ($spamshield_options['form_include_user_meta']==TRUE?"checked=\"checked\"":"") ?> value="1" />
-						<strong><?php _e( 'Include user technical data in email.', WPSS_PLUGIN_NAME ); ?></strong><br /><?php _e( 'This adds some extra technical data to the end of the contact form email about the person submitting the form.<br />It includes: <strong>Browser / User Agent</strong>, <strong>Referrer</strong>, <strong>IP Address</strong>, <strong>Server</strong>, etc.<br />This is helpful for dealing with abusive or threatening comments. You can use the IP address provided to identify or block trolls from your site with whatever method you prefer.', WPSS_PLUGIN_NAME ); ?><br />&nbsp;
-					</label>
-					</li>
-
-				</ul>
-			</fieldset>
-			<p class="submit">
-			<input type="submit" name="submit_wpss_contact_options" value="<?php _e( 'Save Changes' ); ?>" class="button-primary" style="float:left;" />
-			</p>
-			</form>
-			<p>&nbsp;</p>
-			<p><div style="float:right;font-size:12px;">[ <a href="#wpss_top"><?php _e( 'BACK TO TOP', WPSS_PLUGIN_NAME ); ?></a> ]</div></p>
-			<p>&nbsp;</p>
-			</div>
-			<div style='width:797px;border-style:solid;border-width:1px;border-color:#333333;background-color:#FEFEFE;padding:0px 15px 0px 15px;margin-top:<?php echo $wpss_vert_margins; ?>px;margin-right:<?php echo $wpss_horz_margins; ?>px;float:left;clear:left;'>
-  			<p><a name="wpss_let_others_know"><h3><?php _e( 'Let Others Know About WP-SpamShield', WPSS_PLUGIN_NAME ); ?></h3></a></p>
-			<p><?php _e( '<strong>How does it feel to blog without being bombarded by automated comment spam?</strong> If you\'re happy with WP-SpamShield, there\'s a few things you can do to let others know:', WPSS_PLUGIN_NAME ); ?></p>
-			<ul style="list-style-type:disc;padding-left:30px;">
-				<li><a href="http://www.redsandmarketing.com/blog/wp-spamshield-wordpress-plugin-released/#comments" target="_blank" rel="external" ><?php _e( 'Leave a Comment' ); ?></a></li>
-				<li><a href="<?php echo WPSS_WP_RATING_URL; ?>" target="_blank" rel="external" ><?php _e( 'Give WP-SpamShield a good rating on WordPress.org.', WPSS_PLUGIN_NAME ); ?></a></li>
-				<li><a href="<?php echo WPSS_HOME_URL; ?>end-blog-spam/" target="_blank" rel="external" ><?php _e( 'Place a graphic link on your site.', WPSS_PLUGIN_NAME ); ?></a> <?php _e( 'Let others know how they can help end blog spam.', WPSS_PLUGIN_NAME ); ?> ( &lt;/BLOGSPAM&gt; )</li>
-			</ul>
-			<p><a href="<?php echo WPSS_HOME_URL; ?>" style="border-style:none;text-decoration:none;" target="_blank" rel="external" ><img src="<?php echo WPSS_PLUGIN_IMG_URL; ?>/end-blog-spam-button-01-black.png" alt="End Blog Spam! WP-SpamShield Comment Spam Protection for WordPress" width="140" height="66" style="border-style:none;text-decoration:none;margin-top:15px;margin-left:15px;" /></a></p>
-			<p><div style="float:right;font-size:12px;">[ <a href="#wpss_top"><?php _e( 'BACK TO TOP', WPSS_PLUGIN_NAME ); ?></a> ]</div></p>
-			<p>&nbsp;</p>
-			</div>
-			<div style='width:797px;border-style:solid;border-width:1px;border-color:#003366;background-color:#DDEEFF;padding:0px 15px 0px 15px;margin-top:<?php echo $wpss_vert_margins; ?>px;margin-right:<?php echo $wpss_horz_margins; ?>px;float:left;clear:left;'>
-			<p><a name="wpss_download_plugin_documentation"><h3><?php echo rs_wpss_doc_txt(); ?></h3></a></p>
-			<p><?php echo __( 'Plugin Homepage', WPSS_PLUGIN_NAME ) . ' / ' . rs_wpss_doc_txt(); ?>: <a href="<?php echo WPSS_HOME_URL; ?>" target="_blank" rel="external" >WP-SpamShield</a><br />
-			<?php _e( 'Leave a Comment' ); ?>: <a href="http://www.redsandmarketing.com/blog/wp-spamshield-wordpress-plugin-released/" target="_blank" rel="external" ><?php _e( 'WP-SpamShield Release Announcement Blog Post', WPSS_PLUGIN_NAME ); ?></a><br />
-			<?php _e( 'WordPress.org Page', WPSS_PLUGIN_NAME ); ?>: <a href="<?php echo WPSS_WP_URL; ?>" target="_blank" rel="external" >WP-SpamShield</a><br />
-			<?php _e( 'Tech Support / Questions', WPSS_PLUGIN_NAME ); ?>: <a href="<?php echo WPSS_SUPPORT_URL; ?>" target="_blank" rel="external" ><?php _e( 'WP-SpamShield Support Page', WPSS_PLUGIN_NAME ); ?></a><br />
-			<?php _e( 'End Blog Spam', WPSS_PLUGIN_NAME ); ?>: <a href="<?php echo WPSS_HOME_URL; ?>end-blog-spam/" target="_blank" rel="external" ><?php _e( 'Let Others Know About WP-SpamShield', WPSS_PLUGIN_NAME ); ?>!</a><br />
-			Twitter: <a href="http://twitter.com/WPSpamShield" target="_blank" rel="external" >@WPSpamShield</a><br />
-			<?php 
-			if ( rs_wpss_is_lang_en_us() ) {
-				echo 'Need WordPress Consulting? <a href="http://www.redsandmarketing.com/web-design/wordpress-consulting/" target="_blank" rel="external" >We can help.</a><br />';
-				}
-			?>
-            <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank" style="margin-top:10px;">
-            <input type="hidden" name="cmd" value="_s-xclick">
-            <input type="hidden" name="hosted_button_id" value="DFMTNHJEPFFUL">
-            <input type="image" src="<?php echo WPSS_PLUGIN_IMG_URL; ?>/btn-donate-sm.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!" />
-            <img alt="" border="0" src="<?php echo WPSS_PLUGIN_IMG_URL; ?>/spacer.gif" width="1" height="1" />
-            </form>
-			</p>
-			<?php 
-			echo '<p><strong><a href="'.WPSS_DONATE_URL.'" target="_blank" rel="external" >' . __( 'Donate to WP-SpamShield', WPSS_PLUGIN_NAME ) . '</a></strong><br />' . __( 'WP-SpamShield is provided for free.', WPSS_PLUGIN_NAME ) . ' ' . __( 'If you like the plugin, consider a donation to help further its development.', WPSS_PLUGIN_NAME ) . '</p>';
-			?>
-
-			<p><div style="float:right;font-size:12px;">[ <a href="#wpss_top"><?php _e( 'BACK TO TOP', WPSS_PLUGIN_NAME ); ?></a> ]</div></p>
+			<p><div style="float:right;font-size:12px;">[ <a href="#wpss_top"><?php _e( 'TORNA SU', WPSS_PLUGIN_NAME ); ?></a> ]</div></p>
 			<p>&nbsp;</p>
 			</div>
 
-			<?php
-			/* Recommended Partners - BEGIN - Added in 1.6.9 */
-			if ( rs_wpss_is_lang_en_us() ) {
-			?>
-
-			<div style='width:797px;border-style:solid;border-width:1px;border-color:#333333;background-color:#FEFEFE;padding:0px 15px 0px 15px;margin-top:<?php echo $wpss_vert_margins; ?>px;margin-right:<?php echo $wpss_horz_margins; ?>px;float:left;clear:left;'>
-			<p><h3>Recommended Partners</h3></p>
-			<p>Each of these products or services are ones that we highly recommend, based on our experience and the experience of our clients. We do receive a commission if you purchase one of these, but these are all products and services we were already recommending because we believe in them. By purchasing from these providers, you get quality and you help support the further development of WP-SpamShield.</p></div>
-
-			<?php
-				$wpss_rpd	= array(
-					array('clear:left;','RSM_Genesis','Genesis WordPress Framework','Other themes and frameworks have nothing on Genesis. Optimized for site speed and SEO.','Simply put, the Genesis framework is one of the best ways to design and build a WordPress site. Built-in SEO and optimized for speed. Create just about any kind of design with child themes.'),
-					array('','RSM_AIOSEOP','All in One SEO Pack Pro','The best way to manage the code-related SEO for your WordPress site.','Save time and effort optimizing the code of your WordPress site with All in One SEO Pack. One of the top rated, and most downloaded plugins on WordPress.org, this time-saving plugin is incredibly valuable. The pro version provides powerful features not available in the free version.'),
-					);
-				foreach( $wpss_rpd as $i => $v ) {
-					echo '<div style="width:375px;height:280px;border-style:solid;border-width:1px;border-color:#333333;background-color:#FEFEFE;padding:0px 15px 0px 15px;margin-top:'.$wpss_vert_margins.'px;margin-right:'.$wpss_horz_margins.'px;float:left;'.$v[0].'">'.WPSS_EOL.'<p><strong><a href="http://bit.ly/'.$v[1].'" target="_blank" rel="external" >'.$v[2].'</a></strong></p>'.WPSS_EOL.'<p><strong>'.$v[3].'</strong></p>'.WPSS_EOL.'<p>'.$v[4].'</p>'.WPSS_EOL.'<p><a href="http://bit.ly/'.$v[1].'" target="_blank" rel="external" >Click here to find out more. &raquo;</a></p>'.WPSS_EOL.'</div>'.WPSS_EOL;
-					}
-
-				}
-			/* Recommended Partners - END - Added in 1.6.9 */
-			?>
 			<p style="clear:both;">&nbsp;</p>
 			<p style="clear:both;"><em><?php 
 			$this->settings_ver_ftr();
