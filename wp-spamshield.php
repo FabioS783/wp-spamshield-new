@@ -5906,6 +5906,8 @@ function rs_wpss_blacklist_check( $author, $email, $url, $content, $user_ip, $us
 			$sfs_data = json_decode( $sfs_body, true );
 			if ( !empty( $sfs_data['success'] ) ) {
 				if ( ( isset( $sfs_data['ip']['appears'] ) && $sfs_data['ip']['appears'] ) || ( isset( $sfs_data['email']['appears'] ) && $sfs_data['email']['appears'] ) ) {
+					$current_sfs_count = get_option('spamshield_sfs_count', 0);
+					update_option( 'spamshield_sfs_count', $current_sfs_count + 1 );
 					return TRUE;
 				}
 			}
@@ -6873,13 +6875,18 @@ if (!class_exists('WP_SpamShield')) {
 				$spam_stat_href_attr = 'target="_blank" rel="external"';
 				}
 
+			$sfs_count = get_option('spamshield_sfs_count', 0);
+
 			if ( empty( $spam_count_raw ) ) {
-				echo '<p>' . __( 'No comment spam attempts have been detected yet.', WPSS_PLUGIN_NAME ) . $spam_stat_incl_link;
+				echo '<p>' . __( 'Nessun tentativo di spam nei commenti è stato ancora rilevato.', WPSS_PLUGIN_NAME ) . $spam_stat_incl_link;
 				}
 			else {
-				echo '<p>'."<img src='".WPSS_PLUGIN_IMG_URL."/dashboard-spam-protection-24.png' alt='' width='24' height='24' style='border-style:none;vertical-align:middle;padding-right:7px;' />".' <a href="'.$spam_stat_url.'" '.$spam_stat_href_attr.'>WP-SpamShield</a> '.sprintf( __( 'has blocked <strong> %s </strong> spam.', WPSS_PLUGIN_NAME ), rs_wpss_number_format( $spam_count_raw ) ).'</p>'.WPSS_EOL;
+				echo '<p>'."<img src='".WPSS_PLUGIN_IMG_URL."/dashboard-spam-protection-24.png' alt='' width='24' height='24' style='border-style:none;vertical-align:middle;padding-right:7px;' />".' <a href="'.$spam_stat_url.'" '.$spam_stat_href_attr.'>WP-SpamShield</a> '.sprintf( __( 'ha bloccato <strong> %s </strong> spam.', WPSS_PLUGIN_NAME ), rs_wpss_number_format( $spam_count_raw ) ).'</p>'.WPSS_EOL;
 				if ( $avg_blk_dly >= 2 ) {
-					echo "<p><img src='".WPSS_PLUGIN_IMG_URL."/spacer.gif' alt='' width='24' height='24' style='border-style:none;vertical-align:middle;padding-right:7px;' /> " . __( 'Average spam blocked daily', WPSS_PLUGIN_NAME ) . ": <strong>".$avg_blk_dly_d."</strong></p>".WPSS_EOL;
+					echo "<p><img src='".WPSS_PLUGIN_IMG_URL."/spacer.gif' alt='' width='24' height='24' style='border-style:none;vertical-align:middle;padding-right:7px;' /> " . __( 'Media spam bloccato giornalmente', WPSS_PLUGIN_NAME ) . ": <strong>".$avg_blk_dly_d."</strong></p>".WPSS_EOL;
+					}
+				if ( $sfs_count > 0 ) {
+					echo "<p><img src='".WPSS_PLUGIN_IMG_URL."/spacer.gif' alt='' width='24' height='24' style='border-style:none;vertical-align:middle;padding-right:7px;' /> " . __( 'Di cui bloccati tramite StopForumSpam', WPSS_PLUGIN_NAME ) . ": <strong>".rs_wpss_number_format($sfs_count)."</strong></p>".WPSS_EOL;
 					}
 				}
 			}
