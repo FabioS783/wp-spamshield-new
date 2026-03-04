@@ -145,6 +145,7 @@ function rs_wpss_ds() {
 	}
 
 function rs_wpss_start_session() {
+	if ( is_admin() || rs_wpss_is_doing_ajax() || rs_wpss_is_doing_cron() ) { return; }
 	global $wpss_session_id;
 	if( empty( $wpss_session_id ) ) { $wpss_session_id = session_id(); }
 	if( empty( $wpss_session_id ) && !headers_sent() ) { session_start(); $wpss_session_id = session_id(); }
@@ -1188,7 +1189,7 @@ function rs_wpss_load_languages() {
 	}
 
 function rs_wpss_first_action() {
-	if ( rs_wpss_is_admin_sproc() ) { return; }
+	if ( is_admin() || rs_wpss_is_admin_sproc() || rs_wpss_is_doing_ajax() || rs_wpss_is_doing_cron() ) { return; }
 	rs_wpss_start_session();
 	/* Add all commands after this */
 
