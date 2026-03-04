@@ -2,9 +2,9 @@
 /*
 Plugin Name: WP-SpamShield
 Plugin URI: http://www.redsandmarketing.com/plugins/wp-spamshield/
-Description: An extremely powerful and user-friendly all-in-one anti-spam plugin that <strong>eliminates comment spam, trackback spam, contact form spam, and registration spam</strong>. No CAPTCHA's, challenge questions, or other inconvenience to website visitors. Enjoy running a WordPress site without spam! Includes a spam-blocking contact form feature.
-Author: Scott Allen
-Version: 2.0.0
+Description: Un plugin antispam estremamente potente e facile da usare che <strong>elimina lo spam nei commenti, trackback, moduli di contatto e registrazioni</strong>. Nessun CAPTCHA, domande di sicurezza o altri disagi per i visitatori. Goditi un sito WordPress senza spam!
+Author: Scott Allen & DF Staff
+Version: 2.0.1
 Author URI: http://www.redsandmarketing.com/
 Text Domain: wp-spamshield
 License: GPLv2
@@ -41,7 +41,7 @@ if( !defined( 'ABSPATH' ) ) {
 	die( 'ERROR: This plugin requires WordPress and will not function if called directly.' );
 	}
 
-define( 'WPSS_VERSION', '2.0.0' );
+define( 'WPSS_VERSION', '2.0.1' );
 define( 'WPSS_REQUIRED_WP_VERSION', '3.9' );
 define( 'WPSS_REQUIRED_PHP_VERSION', '5.3' );
 /***
@@ -105,7 +105,7 @@ if( !defined( 'RSMP_PHP_MEM_LIMIT' ) ) 			{ $wpss_php_memory_limit = rs_wpss_for
 $popular_cache_plugins_default 					= array ( 'cachify', 'db-cache-reloaded', 'db-cache-reloaded-fix', 'gator-cache', 'hyper-cache', 'hyper-cache-extended', 'lite-cache', 'quick-cache', 'w3-total-cache', 'wp-fast-cache', 'wp-fastest-cache', 'wp-super-cache', 'zencache', 'zencache-pro' );
 if( !defined( 'WPSS_POPULAR_CACHE_PLUGINS' ) ) { define( 'WPSS_POPULAR_CACHE_PLUGINS', serialize( $popular_cache_plugins_default ) ); }
 /* SET THE DEFAULT CONSTANT VALUES HERE */
-$wpss_options_default							= array ( 'block_all_trackbacks' => 0, 'block_all_pingbacks' => 0, 'comment_logging' => 0, 'comment_logging_start_date' => 0, 'comment_logging_all' => 0, 'enhanced_comment_blacklist' => 0, 'enable_whitelist' => 0, 'comment_min_length' => 15, 'allow_proxy_users' => 1, 'hide_extra_data' => 0, 'registration_shield_disable' => 0, 'registration_shield_level_1' => 0, 'disable_cf7_shield' => 0, 'disable_gf_shield' => 0, 'disable_misc_form_shield' => 0, 'disable_email_encode' => 0, 'allow_comment_author_keywords' => 0, 'form_include_website' => 1, 'form_require_website' => 0, 'form_include_phone' => 1, 'form_require_phone' => 0, 'form_include_company' => 0, 'form_require_company' => 0, 'form_include_drop_down_menu' => 0, 'form_require_drop_down_menu' => 0, 'form_drop_down_menu_title' => '', 'form_drop_down_menu_item_1' => '', 'form_drop_down_menu_item_2' => '', 'form_drop_down_menu_item_3' => '', 'form_drop_down_menu_item_4' => '', 'form_drop_down_menu_item_5' => '', 'form_drop_down_menu_item_6' => '', 'form_drop_down_menu_item_7' => '', 'form_drop_down_menu_item_8' => '', 'form_drop_down_menu_item_9' => '', 'form_drop_down_menu_item_10' => '', 'form_message_width' => 40, 'form_message_height' => 10, 'form_message_min_length' => 25, 'form_response_thank_you_message' => __( 'Your message was sent successfully. Thank you.', WPSS_PLUGIN_NAME ), 'form_include_user_meta' => 1, 'promote_plugin_link' => 0, );
+$wpss_options_default							= array ( 'block_all_trackbacks' => 0, 'block_all_pingbacks' => 0, 'comment_logging' => 0, 'comment_logging_start_date' => 0, 'comment_logging_all' => 0, 'enhanced_comment_blacklist' => 0, 'enable_whitelist' => 0, 'comment_min_length' => 15, 'allow_proxy_users' => 1, 'hide_extra_data' => 0, 'registration_shield_disable' => 0, 'registration_shield_level_1' => 0, 'disable_cf7_shield' => 0, 'disable_gf_shield' => 0, 'disable_misc_form_shield' => 0, 'disable_email_encode' => 0, 'allow_comment_author_keywords' => 0, 'form_include_website' => 1, 'form_require_website' => 0, 'form_include_phone' => 1, 'form_require_phone' => 0, 'form_include_company' => 0, 'form_require_company' => 0, 'form_include_drop_down_menu' => 0, 'form_require_drop_down_menu' => 0, 'form_drop_down_menu_title' => '', 'form_drop_down_menu_item_1' => '', 'form_drop_down_menu_item_2' => '', 'form_drop_down_menu_item_3' => '', 'form_drop_down_menu_item_4' => '', 'form_drop_down_menu_item_5' => '', 'form_drop_down_menu_item_6' => '', 'form_drop_down_menu_item_7' => '', 'form_drop_down_menu_item_8' => '', 'form_drop_down_menu_item_9' => '', 'form_drop_down_menu_item_10' => '', 'form_message_width' => 40, 'form_message_height' => 10, 'form_message_min_length' => 25, 'form_response_thank_you_message' => __( 'Your message was sent successfully. Thank you.', WPSS_PLUGIN_NAME ), 'form_include_user_meta' => 1 );
 if( !defined( 'WPSS_OPTIONS_DEFAULT' ) ) 		{ define( 'WPSS_OPTIONS_DEFAULT', serialize( $wpss_options_default ) ); }
 $wpss_depr_options_default 						= array( 'wpss_version' => '', 'init_user_approve_run' => '', 'install_status' => '', 'warning_status' => '', 'regalert_status' => '', 'last_admin' => '', 'wpss_admins' => array(), 'reg_count' => 0, 'spam_count' => 0, 'wpssmid_cache' => array(), 'wpss_procdat' => array( 'total_tracked' => 0, 'total_wpss_time' => 0, 'avg_wpss_proc_time' => 0, 'total_comment_proc_time' => 0, 'avg_comment_proc_time' => 0, 'total_wpss_avg_tracked' => 0, 'total_avg_wpss_proc_time' => 0, 'avg2_wpss_proc_time' => 0 ), );
 if( !defined( 'WPSS_DEPR_OPTIONS_DEFAULT' ) ) 	{ define( 'WPSS_DEPR_OPTIONS_DEFAULT', serialize( $wpss_depr_options_default ) ); }
@@ -2137,7 +2137,6 @@ function rs_wpss_comment_form_append() {
 	if ( rs_wpss_is_admin_sproc() ) { return; }
 	global $spamshield_options; if ( empty( $spamshield_options ) ) { $spamshield_options = get_option('spamshield_options'); }
 	rs_wpss_update_session_data($spamshield_options);
-	$promote_plugin_link 	= $spamshield_options['promote_plugin_link'];
 	if ( TRUE === WPSS_COMPAT_MODE ) {
 		$wpss_key_values 		= rs_wpss_get_key_values();
 		$wpss_js_key 			= $wpss_key_values['wpss_js_key'];
@@ -2149,12 +2148,6 @@ function rs_wpss_comment_form_append() {
 		}
 	echo WPSS_EOL.'<noscript><input type="hidden" name="'.WPSS_JSONST.'" value="NS1" /></noscript>'.WPSS_EOL;
 
-	if ( !empty( $promote_plugin_link ) ) {
-		$sip5c = '0'; $sip5c = substr(WPSS_SERVER_ADDR, 4, 1); /* Server IP 5th Char */
-		$ppl_code = array( '0' => 0, '1' => 1, '2' => 2, '3' => 3, '4' => 4, '5' => 5, '6' => 6, '7' => 7, '8' => 8, '9' => 9, '.' => 10 );
-		if ( preg_match( "~^[0-9\.]$~", $sip5c ) ) { $int = $ppl_code[$sip5c]; } else { $int = 0; }
-		echo WPSS_Promo_Links::comment_promo_link($int).WPSS_EOL;
-		}
 	$wpss_js_disabled_msg 	= __( 'Currently you have JavaScript disabled. In order to post comments, please make sure JavaScript and Cookies are enabled, and reload the page.', WPSS_PLUGIN_NAME );
 	$wpss_js_enable_msg 	= __( 'Click here for instructions on how to enable JavaScript in your browser.', WPSS_PLUGIN_NAME );
 	echo '<noscript><p><strong>'.$wpss_js_disabled_msg.'</strong> <a href="http://enable-javascript.com/" rel="nofollow external" >'.$wpss_js_enable_msg.'</a></p></noscript>'.WPSS_EOL;
@@ -3070,17 +3063,6 @@ function rs_wpss_contact_form( $content = NULL, $shortcode_check = NULL ) {
 			$cf_content .= '<p><input type="submit" id="wpss_contact_submit" name="wpss_contact_submit" value="' . __( 'Send Message', WPSS_PLUGIN_NAME ) . '" /></p>'.WPSS_EOL;
 			$cf_content .= '<p>' . sprintf( __( 'Required fields are marked %s' ), '*' ) . '</p>'.WPSS_EOL;
 			$cf_content .= '<p>&nbsp;</p>'.WPSS_EOL;
-			if ( !empty( $promote_plugin_link ) ) {
-				$sip5c = '0';
-				$sip5c = substr(WPSS_SERVER_ADDR, 4, 1); /* Server IP 5th Char */
-				$ppl_code = array( '0' => 2, '1' => 2, '2' => 2, '3' => 2, '4' => 2, '5' => 2, '6' => 1, '7' => 0, '8' => 2, '9' => 2, '.' => 2 );
-				if ( preg_match( "~^[0-9\.]$~", $sip5c ) ) {
-					$int = $ppl_code[$sip5c];
-					}
-				else { $int = 0; }
-				$cf_content .= WPSS_Promo_Links::contact_promo_link($int).WPSS_EOL;
-				$cf_content .= '<p>&nbsp;</p>'.WPSS_EOL;
-				}
 			$cf_content .= '</form>'.WPSS_EOL;
 
 			/* PRE-TESTS, WILL DISABLE CONTACT FORM */
@@ -6817,14 +6799,6 @@ if (!class_exists('WP_SpamShield')) {
 			}
 
 		function filter_plugin_meta( $links, $file ) {
-			/* Add Links on Dashboard Plugins page, in plugin meta */
-			if ( rs_wpss_is_admin_sproc( TRUE ) ) { return $links; }
-			if ( $file === WPSS_PLUGIN_BASENAME ) { /* After other links */
-				$links[] = '<a href="'.WPSS_HOME_URL.'" target="_blank" rel="external" >' . rs_wpss_doc_txt() . '</a>';
-				$links[] = '<a href="'.WPSS_SUPPORT_URL.'" target="_blank" rel="external" >' . __( 'Support', WPSS_PLUGIN_NAME ) . '</a>';
-				if ( rs_wpss_count() >= 2000 ) { $links[] = '<a href="'.WPSS_WP_RATING_URL.'" title="' . __( 'Let others know by giving it a good rating on WordPress.org!', WPSS_PLUGIN_NAME ) . '" target="_blank" rel="external" >' . __( 'Rate the Plugin', WPSS_PLUGIN_NAME ) . '</a>'; }
-				$links[] = '<a href="'.WPSS_DONATE_URL.'" target="_blank" rel="external" >' . __( 'Donate', WPSS_PLUGIN_NAME ) . '</a>';
-				}
 			return $links;
 			}
 
@@ -7036,7 +7010,7 @@ if (!class_exists('WP_SpamShield')) {
 				/* Validate Request Values */
 				if ( !empty( $_REQUEST ) ) { $valid_req_spamshield_options = $_REQUEST;	} else { $valid_req_spamshield_options = array(); }
 				$wpss_options_default = unserialize( WPSS_OPTIONS_DEFAULT );
-				$wpss_options_general_boolean = array ( 'block_all_trackbacks', 'block_all_pingbacks', 'comment_logging', 'comment_logging_all', 'enhanced_comment_blacklist', 'enable_whitelist', 'allow_proxy_users', 'hide_extra_data', 'registration_shield_disable', 'registration_shield_level_1', 'disable_cf7_shield', 'disable_gf_shield', 'disable_misc_form_shield', 'disable_email_encode', 'allow_comment_author_keywords', 'promote_plugin_link', 'enable_stopforumspam' );
+				$wpss_options_general_boolean = array ( 'block_all_trackbacks', 'block_all_pingbacks', 'comment_logging', 'comment_logging_all', 'enhanced_comment_blacklist', 'enable_whitelist', 'allow_proxy_users', 'hide_extra_data', 'registration_shield_disable', 'registration_shield_level_1', 'disable_cf7_shield', 'disable_gf_shield', 'disable_misc_form_shield', 'disable_email_encode', 'allow_comment_author_keywords', 'enable_stopforumspam' );
 				$wpss_options_general_boolean_count = count( $wpss_options_general_boolean );
 				$i = 0;
 				while ( $i < $wpss_options_general_boolean_count ) {
@@ -7058,7 +7032,7 @@ if (!class_exists('WP_SpamShield')) {
 				else { $valid_req_spamshield_options['comment_min_length'] = $wpss_options_default['comment_min_length']; }
 
 				/* Update Values */
-				$option_list_go = array( 'block_all_trackbacks', 'block_all_pingbacks', 'comment_logging', 'comment_logging_all', 'enhanced_comment_blacklist', 'enable_whitelist', 'comment_min_length', 'allow_proxy_users', 'hide_extra_data', 'registration_shield_disable', 'registration_shield_level_1', 'disable_cf7_shield', 'disable_gf_shield', 'disable_misc_form_shield', 'disable_email_encode', 'allow_comment_author_keywords', 'promote_plugin_link', 'enable_stopforumspam' );
+				$option_list_go = array( 'block_all_trackbacks', 'block_all_pingbacks', 'comment_logging', 'comment_logging_all', 'enhanced_comment_blacklist', 'enable_whitelist', 'comment_min_length', 'allow_proxy_users', 'hide_extra_data', 'registration_shield_disable', 'registration_shield_level_1', 'disable_cf7_shield', 'disable_gf_shield', 'disable_misc_form_shield', 'disable_email_encode', 'allow_comment_author_keywords', 'enable_stopforumspam' );
 				foreach( $option_list_go as $i => $v ) { $spamshield_options[$v] = $valid_req_spamshield_options[$v]; }
 				$spamshield_options['comment_logging_start_date']		= $comment_logging_start_date;
 				$spamshield_options['install_date']						= $install_date;
@@ -7156,7 +7130,6 @@ if (!class_exists('WP_SpamShield')) {
 				array( 'disable_misc_form_shield', __( 'Disabilita antispam per moduli vari.', WPSS_PLUGIN_NAME ), __( 'Questa opzione disabiliterà la protezione antispam per i moduli personalizzati e vari sul tuo sito. (Tutti i moduli che non provengono da WP-SpamShield, Contact Form 7 o Gravity Forms.)', WPSS_PLUGIN_NAME ) ),
 				array( 'disable_email_encode', __( 'Disabilita la protezione dai raccoglitori di email.', WPSS_PLUGIN_NAME ), __( 'Questa opzione disabiliterà la codifica automatica degli indirizzi email e dei link mailto nel contenuto del tuo sito web.', WPSS_PLUGIN_NAME ) ),
 				array( 'allow_comment_author_keywords', __( 'Consenti parole chiave nei nomi degli autori dei commenti.', WPSS_PLUGIN_NAME ), sprintf( __( 'Questo consentirà l\'uso di alcune parole chiave nei nomi degli autori dei commenti. Per impostazione predefinita, WP-SpamShield impedisce l\'uso di molte parole chiave di spam comuni nel campo "%1$s" del commento. Questa opzione è utile per i siti con utenti che usano pseudonimi o per i siti che desiderano semplicemente consentire nomi aziendali e parole chiave nel campo "%2$s" del commento. Questa opzione non è raccomandata, poiché potrebbe consentire più spam umano, ma è disponibile se lo desideri. Il tuo sito sarà comunque protetto contro tutto lo spam automatizzato nei commenti.', WPSS_PLUGIN_NAME ), __( 'Nome' ), __( 'Nome' ) ) ),
-				array( 'promote_plugin_link', __( 'Aiutare a promuovere WP-SpamShield?', WPSS_PLUGIN_NAME ), __( 'Questo posiziona un piccolo link sotto i commenti e il modulo di contatto, facendo sapere agli altri cosa sta bloccando lo spam sul tuo blog.', WPSS_PLUGIN_NAME ) ),
 				array( 'enable_stopforumspam', __( 'Abilita StopForumSpam API.', WPSS_PLUGIN_NAME ), __( 'Controlla l\'indirizzo IP e l\'email contro il database di StopForumSpam per bloccare noti spammer.', WPSS_PLUGIN_NAME ) ),
 				);
 			foreach( $boolean_options_go as $i => $v ) {
