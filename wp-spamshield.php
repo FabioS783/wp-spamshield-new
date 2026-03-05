@@ -4,7 +4,7 @@ Plugin Name: WP-SpamShield
 Plugin URI: http://www.redsandmarketing.com/plugins/wp-spamshield/
 Description: Un plugin antispam estremamente potente e facile da usare che <strong>elimina lo spam nei commenti, trackback, moduli di contatto e registrazioni</strong>. Nessun CAPTCHA, domande di sicurezza o altri disagi per i visitatori. Goditi un sito WordPress senza spam!
 Author: Scott Allen & DF Staff
-Version: 2.0.1
+Version: 2.0.2
 Author URI: http://www.redsandmarketing.com/
 Text Domain: wp-spamshield
 License: GPLv2
@@ -41,7 +41,7 @@ if( !defined( 'ABSPATH' ) ) {
 	die( 'ERROR: This plugin requires WordPress and will not function if called directly.' );
 	}
 
-define( 'WPSS_VERSION', '2.0.1' );
+define( 'WPSS_VERSION', '2.0.2' );
 define( 'WPSS_REQUIRED_WP_VERSION', '3.9' );
 define( 'WPSS_REQUIRED_PHP_VERSION', '5.3' );
 /***
