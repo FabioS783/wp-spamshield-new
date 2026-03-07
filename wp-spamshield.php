@@ -5162,7 +5162,8 @@ function rs_wpss_misc_form_spam_check() {
 		$ip_arr = explode( '.', $ip ); unset( $ip_arr[3] ); $ip_c = implode( '.', $ip_arr ) . '.';
 		if ( strpos( WPSS_SERVER_ADDR, $ip_c ) === 0 ) { return; } /* Skip anything on same C-Block as website */
 		}
-	$ecom_urls = array( '/checkout/', '/store/', '/shop/', '/cart/' );
+	if ( isset( $_GET['wc-ajax'] ) ) { return; } /* Bypass for modern WC AJAX Checkout */
+	$ecom_urls = array( 'checkout', 'store', 'shop', 'cart', 'cassa', 'carrello', 'wc-ajax=', 'wc-api=', 'WC_Gateway' );
 	foreach( $ecom_urls as $k => $u ) { if ( strpos( $_SERVER['REQUEST_URI'], $u ) !== FALSE ) { return; } }
 	$admin_url = RSMP_ADMIN_URL.'/';
 	if ( $post_count >= 5 && isset( $_POST['log'], $_POST['pwd'], $_POST['wp-submit'], $_POST['testcookie'], $_POST['redirect_to'] ) && $_POST['redirect_to'] === $admin_url ) { return; }
@@ -5417,18 +5418,21 @@ function rs_wpss_cf7_spam_check( $spam ) {
 	$form_auth_dat 			= array( 'comment_author' => '', 'comment_author_email' => '', 'comment_author_url' => '' );
 
 	/* JS/JQUERY CHECK */
-	$wpss_key_values 		= rs_wpss_get_key_values();
-	$wpss_jq_key 			= $wpss_key_values['wpss_jq_key'];
-	$wpss_jq_val 			= $wpss_key_values['wpss_jq_val'];
-	if ( TRUE === WPSS_COMPAT_MODE ) { // Fall back to FVFJS Keys instead of jQuery keys from jscripts.php
-		$wpss_jq_key 		= $wpss_key_values['wpss_js_key'];
-		$wpss_jq_val 		= $wpss_key_values['wpss_js_val'];
-		}
-	$wpss_jsck_jquery_val	= !empty( $_POST[$wpss_jq_key] ) ? $_POST[$wpss_jq_key] : '';
-	if ( !empty( $_POST ) && ( !isset( $_POST[WPSS_REF2XJS] ) || $wpss_jsck_jquery_val !== $wpss_jq_val ) ) {
-		add_filter( 'wpcf7_display_message', 'rs_wpss_cf7_spam_message_js', 10, 2 );
-		$wpss_error_code .= ' '.$pref.'JQHFT-6';
-		$cf7_jsck_error = TRUE;
+	$cf7_is_rest_api = ( defined( 'REST_REQUEST' ) && REST_REQUEST ) || ( strpos( $_SERVER['REQUEST_URI'], '/wp-json/contact-form-7/' ) !== FALSE );
+	if ( ! $cf7_is_rest_api ) {
+		$wpss_key_values 		= rs_wpss_get_key_values();
+		$wpss_jq_key 			= $wpss_key_values['wpss_jq_key'];
+		$wpss_jq_val 			= $wpss_key_values['wpss_jq_val'];
+		if ( TRUE === WPSS_COMPAT_MODE ) { // Fall back to FVFJS Keys instead of jQuery keys from jscripts.php
+			$wpss_jq_key 		= $wpss_key_values['wpss_js_key'];
+			$wpss_jq_val 		= $wpss_key_values['wpss_js_val'];
+			}
+		$wpss_jsck_jquery_val	= !empty( $_POST[$wpss_jq_key] ) ? $_POST[$wpss_jq_key] : '';
+		if ( !empty( $_POST ) && ( !isset( $_POST[WPSS_REF2XJS] ) || $wpss_jsck_jquery_val !== $wpss_jq_val ) ) {
+			add_filter( 'wpcf7_display_message', 'rs_wpss_cf7_spam_message_js', 10, 2 );
+			$wpss_error_code .= ' '.$pref.'JQHFT-6';
+			$cf7_jsck_error = TRUE;
+			}
 		}
 
 	/* EMAIL BLACKLIST */
@@ -6187,7 +6191,8 @@ if ( !function_exists('wp_new_user_notification') ) {
 function rs_wpss_wc_check_new_user( $errors ) {
 	/* WooCommerce wrapper for rs_wpss_check_new_user() */
 	if ( isset( $_GET['action'] ) && $_GET['action'] === 'woocommerce_checkout' ) { return $errors; }
-	$ecom_urls = array( '/checkout/' );
+	if ( isset( $_GET['wc-ajax'] ) ) { return $errors; } /* Bypass for modern WC AJAX Checkout */
+	$ecom_urls = array( 'checkout', 'cassa', 'carrello', 'cart', 'wc-ajax=', 'wc-api=', 'WC_Gateway' );
 	foreach( $ecom_urls as $k => $u ) {
 		if ( strpos( $_SERVER['REQUEST_URI'], $u ) !== FALSE ) { return $errors; }
 		}
@@ -6205,14 +6210,15 @@ function rs_wpss_check_new_user( $errors = NULL, $user_login = NULL, $user_email
 	if ( !empty( $wpss_wc_reg_inprog ) || rs_wpss_is_woocom_enabled() ) {
 		/* Check if we're on a WooCommerce Checkout Page */
 		if ( ( isset( $_GET['action'] ) && $_GET['action'] === 'woocommerce_checkout' ) ) { return $errors; }
-		$ecom_urls = array( '/checkout/' );
+		if ( isset( $_GET['wc-ajax'] ) ) { return $errors; } /* Bypass for modern WC AJAX Checkout */
+		$ecom_urls = array( 'checkout', 'cassa', 'carrello', 'cart', 'wc-ajax=', 'wc-api=', 'WC_Gateway' );
 		foreach( $ecom_urls as $k => $u ) {
 			if ( strpos( $_SERVER['REQUEST_URI'], $u ) !== FALSE ) { return $errors; }
 			}
 		}
 	elseif ( rs_wpss_is_ecom_enabled() ) {
 		/* Check if we're on another e-commerce Checkout or Shopping Cart Page */
-		$ecom_urls = array( '/checkout/', '/store/', '/shop/', '/cart/' );
+		$ecom_urls = array( 'checkout', 'store', 'shop', 'cart', 'cassa', 'carrello' );
 		foreach( $ecom_urls as $k => $u ) {
 			if ( strpos( $_SERVER['REQUEST_URI'], $u ) !== FALSE ) { return $errors; }
 			}
