@@ -24,6 +24,14 @@ Questo plugin è stato ampiamente riscritto e modernizzato per garantire le mass
 
 ---
 
+## 📝 Changelog Recente
+
+### Versione 2.0.3
+* **Bugfix Critico WooCommerce:** Aggiunto un solido bypass per il carrello e il checkout di WooCommerce, supportando in modo completo URL localizzati (es. `/cassa/`, `/carrello/`) e le richieste di background (`?wc-ajax=checkout`). Questo impedisce totalmente falsi positivi ("errore cookie e javascript") permettendo agli ordini e ai pagamenti di concludersi correttamente.
+* **Bugfix Contact Form 7 REST API:** Corretto un falso positivo bloccante sulle form CF7. Le chiamate moderne Contact Form 7 via REST API (`/wp-json/contact-form-7/`) ora bypassano in sicurezza i check cookie/JS (che tendevano a fallire su server provvisti di cache) mantenendo invece attivi ed efficienti tutti gli altri filtri contro lo spam testuale e IP blacklisted.
+
+---
+
 ## 📦 Installazione
 
 Essendo questa una versione customizzata e potenziata:
